@@ -7,9 +7,15 @@ function bienvenue() {
     alert("Bienvenue sur Ikagne !");
 }
 
-// Activation du mode application mobile
+// Activation du Service Worker
 if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
-        console.log("Service Worker prêt");
+        navigator.serviceWorker.register("service-worker.js")
+        .then(() => {
+            console.log("Service Worker activé !");
+        })
+        .catch((error) => {
+            console.log("Erreur Service Worker :", error);
+        });
     });
 }

@@ -1,0 +1,35 @@
+// Affichage des produits Ikagne
+
+fetch("backend/products.json")
+.then(response => response.json())
+.then(products => {
+
+    const shop = document.querySelector(".shop");
+
+    products.forEach(product => {
+
+        shop.innerHTML += `
+
+        <div class="product">
+
+            <img src="${product.image}" alt="${product.nom}">
+
+            <h2>${product.nom}</h2>
+
+            <p>${product.prix} ${product.devise}</p>
+
+            <button onclick="ajouterPanier('${product.nom}')">
+                🛒 Ajouter au panier
+            </button>
+
+            <button onclick="payerProduit()">
+                Acheter
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+});

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nom": "T-shirt Ikagne",
+    "prix": 5000,
+    "devise": "FCFA",
+    "image": "assets/logo.png"
+  },
+  {
+    "id": 2,
+    "nom": "Doudoune",
+    "prix": 15000,
+    "devise": "FCFA",
+    "image": "assets/logo.png"
+  },
+  {
+    "id": 3,
+    "nom": "Accessoires",
+    "prix": 3000,
+    "devise": "FCFA",
+    "image": "assets/logo.png"
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "email": "admin@ikagne.com",
+    "password": "123456",
+    "avatar": "assets/logo.png"
+  }
+]

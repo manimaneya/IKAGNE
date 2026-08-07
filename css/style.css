@@ -267,3 +267,40 @@ button {
 .video-actions button:hover {
     background: #333333;
 }
+.notifications {
+    max-width: 500px;
+    min-height: 100vh;
+    margin: auto;
+    background: #ffffff;
+}
+
+.notification-header {
+    padding: 15px;
+    background: #111111;
+    color: #ffffff;
+    text-align: center;
+}
+
+.notification-list {
+    padding: 10px;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.notification img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+.notification p {
+    margin: 0;
+    line-height: 1.4;
+}

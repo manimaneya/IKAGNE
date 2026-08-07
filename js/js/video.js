@@ -10,3 +10,14 @@ function publierVideo() {
 
     alert("Votre vidéo \"" + titre + "\" est prête à être publiée !");
 }
+function likeVideo() {
+    alert("❤️ Merci d'avoir aimé cette vidéo !");
+}
+
+function commentVideo() {
+    alert("💬 Les commentaires seront disponibles prochainement.");
+}
+
+function shareVideo() {
+    alert("🔄 Le partage sera bientôt disponible.");
+}

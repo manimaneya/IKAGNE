@@ -101,3 +101,71 @@ button {
 .video-card p {
     padding: 0 15px;
 }
+.chat {
+    max-width: 500px;
+    height: 100vh;
+    margin: auto;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 15px;
+    background: #111;
+    color: white;
+    text-align: center;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.contact img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.messages-box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.received {
+    background: #eeeeee;
+    padding: 10px;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+.sent {
+    background: #111;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin-left: auto;
+    width: fit-content;
+}
+
+.send-box {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.send-box input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+.send-box button {
+    margin-left: 10px;
+}

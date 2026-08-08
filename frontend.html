@@ -84,7 +84,17 @@
       alert("Connexion impossible : " + erreur.message);
     }
   };
-</script> <body> <div class="app">
+</script> <script type="module">
+  import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log("Utilisateur connecté :", user.email);
+    } else {
+      console.log("Aucun utilisateur connecté");
+    }
+  });
+</script><body> <div class="app">
 
     <header class="top-header">
         <img src="assets/logo.png" alt="Logo Ikagne" class="logo">

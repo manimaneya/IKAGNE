@@ -9,8 +9,44 @@
 
     <link rel="stylesheet" href="style.css"> <link rel="manifest" href="manifest.json">
 </head> <link rel="stylesheet" href="css/style.css">
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword
+  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-<body> <div class="app">
+  const firebaseConfig = {
+    apiKey: "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
+    authDomain: "ikagne.firebaseapp.com",
+    projectId: "ikagne",
+    storageBucket: "ikagne.firebasestorage.app",
+    messagingSenderId: "1081226903315",
+    appId: "1:1081226903315:web:af9aec535fe1b0968a64e6",
+    measurementId: "G-Y855TJMF00"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  window.inscrireUtilisateur = async function(email, password) {
+    try {
+      const resultat = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      alert("Compte Ikagne créé avec succès !");
+      console.log("UID :", resultat.user.uid);
+
+    } catch (erreur) {
+      alert("Erreur : " + erreur.message);
+      console.error(erreur);
+    }
+  };
+</script>
+ <body> <div class="app">
 
     <header class="top-header">
         <img src="assets/logo.png" alt="Logo Ikagne" class="logo">

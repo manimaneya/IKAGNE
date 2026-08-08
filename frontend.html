@@ -24,7 +24,24 @@
     messagingSenderId: "1081226903315",
     appId: "1:1081226903315:web:af9aec535fe1b0968a64e6",
     measurementId: "G-Y855TJMF00"
-  };
+  };<script>
+  async function creerCompte() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+      alert("Veuillez remplir votre e-mail et votre mot de passe.");
+      return;
+    }
+
+    if (password.length < 6) {
+      alert("Le mot de passe doit contenir au moins 6 caractères.");
+      return;
+    }
+
+    await inscrireUtilisateur(email, password);
+  }
+</script>
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);

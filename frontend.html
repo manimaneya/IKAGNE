@@ -94,6 +94,17 @@
       console.log("Aucun utilisateur connecté");
     }
   });
+</script><script type="module">
+  import { signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+  document.getElementById("logoutBtn").addEventListener("click", async () => {
+    try {
+      await signOut(auth);
+      alert("Vous êtes déconnecté.");
+    } catch (error) {
+      console.error("Erreur de déconnexion :", error);
+    }
+  });
 </script><body> <div class="app">
 
     <header class="top-header">

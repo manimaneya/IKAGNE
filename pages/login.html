@@ -1,3 +1,19 @@
-<input id="email" type="email" placeholder="Email">
+// Ikagne - Gestion de connexion
 
-<input id="password" type="password" placeholder="Mot de passe">
+function connexion() {
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (email === "" || password === "") {
+        alert("Veuillez remplir tous les champs.");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("Le mot de passe doit contenir au moins 6 caractères.");
+        return;
+    }
+
+    alert("Formulaire Ikagne prêt pour la connexion Firebase.");
+}

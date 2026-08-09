@@ -1,162 +1,1009 @@
-```html
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ikagne - Commerce & Réseau Social</title>
+```
+<title>Ikagne - Commerce & Réseau Social</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#d49a32">
+
+<style>
+
+    :root {
+        --rose: #f4cbd7;
+        --rose-fonce: #d94f76;
+        --jaune-oxyde: #d49a32;
+        --jaune-fonce: #a86f16;
+        --blanc: #ffffff;
+        --noir: #222222;
+        --gris: #777777;
+        --fond: #fff8fa;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--fond);
+        color: var(--noir);
+        padding-bottom: 85px;
+    }
+
+    button,
+    input,
+    textarea {
+        font-family: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .top-header {
+        min-height: 82px;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        color: white;
+        background: linear-gradient(
+            135deg,
+            var(--rose-fonce),
+            var(--jaune-oxyde)
+        );
+        box-shadow: 0 5px 18px #0003;
+    }
+
+    .logo {
+        width: 58px;
+        height: 58px;
+        object-fit: contain;
+        background: white;
+        padding: 4px;
+        border-radius: 15px;
+        box-shadow:
+            0 5px 0 #8d4b5d,
+            0 8px 16px #0004;
+    }
+
+    .brand h1 {
+        font-size: 30px;
+        line-height: 1;
+        text-shadow: 2px 3px 0 #0004;
+    }
+
+    .brand p {
+        margin-top: 5px;
+        font-size: 11px;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+        width: 100%;
+        max-width: 1100px;
+        margin: auto;
+        padding: 15px;
+    }
+
+    /* =========================
+       RECHERCHE
+    ========================= */
+
+    .search-box {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .search-box input {
+        flex: 1;
+        min-width: 0;
+        padding: 14px;
+        border: 2px solid var(--rose);
+        border-radius: 14px;
+        background: white;
+        outline: none;
+        font-size: 15px;
+    }
+
+    .search-box input:focus {
+        border-color: var(--jaune-oxyde);
+    }
+
+    .search-box button {
+        border: none;
+        padding: 0 18px;
+        border-radius: 14px;
+        color: white;
+        background: var(--jaune-oxyde);
+        font-weight: bold;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+        border-radius: 22px;
+        background:
+            linear-gradient(
+                135deg,
+                white,
+                var(--rose)
+            );
+        border-left: 6px solid var(--jaune-oxyde);
+        box-shadow: 0 5px 18px #0002;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+        margin-bottom: 9px;
+    }
+
+    .hero p {
+        color: #555;
+        line-height: 1.5;
+    }
+
+    /* =========================
+       BOUTONS
+    ========================= */
+
+    .primary-button,
+    .secondary-button,
+    .danger-button {
+        border: none;
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-weight: bold;
+    }
+
+    .primary-button {
+        background: var(--rose-fonce);
+        color: white;
+    }
+
+    .secondary-button {
+        background: var(--jaune-oxyde);
+        color: white;
+    }
+
+    .danger-button {
+        background: #555;
+        color: white;
+    }
+
+    /* =========================
+       TITRES
+    ========================= */
+
+    .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 25px 0 13px;
+    }
+
+    .section-title h2 {
+        font-size: 21px;
+    }
+
+    /* =========================
+       FILTRES
+    ========================= */
+
+    .categories {
+        display: flex;
+        gap: 9px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .category {
+        flex-shrink: 0;
+        border: 2px solid var(--rose);
+        background: white;
+        padding: 10px 15px;
+        border-radius: 20px;
+    }
+
+    /* =========================
+       PRODUITS
+    ========================= */
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .empty-products {
+        grid-column: 1 / -1;
+        padding: 35px 20px;
+        text-align: center;
+        border-radius: 18px;
+        background: white;
+        border: 2px dashed var(--rose);
+        color: var(--gris);
+    }
+
+    .product-card {
+        overflow: hidden;
+        background: white;
+        border-radius: 18px;
+        box-shadow: 0 5px 18px #0002;
+    }
+
+    .product-photo {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+        background: #eee;
+    }
+
+    .product-info {
+        padding: 13px;
+    }
+
+    .product-info h3 {
+        font-size: 17px;
+        margin-bottom: 7px;
+    }
+
+    .product-price {
+        color: var(--jaune-fonce);
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .product-description {
+        color: #666;
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 11px;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 7px;
+    }
+
+    .product-actions button {
+        flex: 1;
+        border: none;
+        padding: 10px 5px;
+        border-radius: 9px;
+        font-weight: bold;
+    }
+
+    .view-product {
+        background: var(--rose-fonce);
+        color: white;
+    }
+
+    /* =========================
+       CREATION FICHE
+    ========================= */
+
+    .create-box {
+        background: white;
+        padding: 18px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px #0001;
+        border-top: 5px solid var(--jaune-oxyde);
+    }
+
+    .create-box input,
+    .create-box textarea {
+        width: 100%;
+        padding: 13px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 11px;
+        outline: none;
+    }
+
+    .create-box textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .image-preview {
+        width: 100%;
+        max-height: 240px;
+        object-fit: contain;
+        display: none;
+        margin-bottom: 12px;
+        border-radius: 14px;
+        background: #f1f1f1;
+    }
+
+    /* =========================
+       AUTHENTIFICATION
+    ========================= */
+
+    .auth-box {
+        background: white;
+        padding: 18px;
+        margin-top: 25px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px #0001;
+    }
+
+    .auth-box input {
+        width: 100%;
+        padding: 13px;
+        margin-top: 8px;
+        border: 1px solid #ddd;
+        border-radius: 11px;
+    }
+
+    .auth-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 10px;
+    }
+
+    #userStatus {
+        margin-top: 12px;
+        font-size: 13px;
+    }
+
+    /* =========================
+       FENÊTRE PRODUIT
+    ========================= */
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        inset: 0;
+        padding: 18px;
+        align-items: center;
+        justify-content: center;
+        background: #0009;
+    }
+
+    .modal.active {
+        display: flex;
+    }
+
+    .modal-content {
+        width: 100%;
+        max-width: 550px;
+        max-height: 92vh;
+        overflow-y: auto;
+        position: relative;
+        padding: 18px;
+        border-radius: 22px;
+        background: white;
+        animation: openModal .2s ease;
+    }
+
+    @keyframes openModal {
+        from {
+            transform: scale(.85);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: #eee;
+        font-size: 22px;
+        z-index: 2;
+    }
+
+    #modalProductImage {
+        width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+        border-radius: 15px;
+        background: #f1f1f1;
+        margin-bottom: 15px;
+    }
+
+    #modalProductTitle {
+        font-size: 23px;
+        margin-bottom: 8px;
+    }
+
+    #modalProductPrice {
+        color: var(--jaune-fonce);
+        font-size: 19px;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+
+    #modalProductDescription {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .modal-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 18px;
+    }
+
+    .modal-actions button {
+        flex: 1;
+        border: none;
+        padding: 13px;
+        border-radius: 12px;
+        font-weight: bold;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .bottom-nav {
+        position: fixed;
+        z-index: 1500;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: white;
+        border-top: 1px solid #ddd;
+        box-shadow: 0 -4px 15px #0002;
+    }
+
+    .bottom-nav button {
+        border: none;
+        background: none;
+        color: #555;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .bottom-nav button.active {
+        color: var(--rose-fonce);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        padding: 25px 15px;
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (min-width: 700px) {
+
+        .products-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    @media (max-width: 450px) {
+
+        .hero h2 {
+            font-size: 21px;
+        }
+
+        .product-photo {
+            height: 145px;
+        }
+
+        .auth-buttons {
+            flex-direction: column;
+        }
+
+        .modal-actions {
+            flex-direction: column;
+        }
+    }
+
+</style>
+```
+
 </head>
 
 <body>
 
-<header class="top-header">
-    <img src="assets/logo.png" alt="Logo Ikagne" class="logo">
-    <h1>Ikagne</h1>
-</header>
+<!-- =========================
+     HEADER
+========================= -->
 
+<header class="top-header">
+
+```
+<img
+    src="assets/logo.png"
+    alt="Logo Ikagne"
+    class="logo"
+>
+
+<div class="brand">
+    <h1>Ikagne</h1>
+    <p>Commerce • Vidéos • Réseau social</p>
+</div>
+```
+
+</header>
 
 <main>
 
-    <!-- Recherche -->
-    <section class="search-box">
+<!-- =========================
+     RECHERCHE
+========================= -->
 
-        <input
-            type="search"
-            id="searchInput"
-            placeholder="Rechercher utilisateurs ou vidéos..."
-        >
+<section class="search-box">
 
-        <button type="button" onclick="searchContent()">
-            🔍 Rechercher
-        </button>
+```
+<input
+    type="search"
+    id="searchInput"
+    placeholder="Rechercher une œuvre ou un produit..."
+>
 
-    </section>
+<button
+    type="button"
+    onclick="rechercherProduits()"
+>
+    Rechercher
+</button>
+```
+
+</section>
+
+<!-- =========================
+     PRESENTATION
+========================= -->
+
+<section class="hero">
+
+```
+<h2>
+    Vendez, présentez et communiquez avec Ikagne.
+</h2>
+
+<p>
+    Créez votre vitrine, ajoutez vos produits avec leurs
+    vraies photos, présentez vos œuvres et échangez
+    directement avec vos clients.
+</p>
+```
+
+</section>
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="categories">
+
+```
+<button class="category">
+    Tout
+</button>
+
+<button class="category">
+    Mode
+</button>
+
+<button class="category">
+    Art
+</button>
+
+<button class="category">
+    Maison
+</button>
+
+<button class="category">
+    Technologie
+</button>
+
+<button class="category">
+    Alimentation
+</button>
+```
+
+</section>
+
+<!-- =========================
+     PRODUITS
+========================= -->
+
+<div class="section-title">
+
+```
+<h2>
+    Produits et œuvres
+</h2>
+
+<span id="productCount">
+    0
+</span>
+```
+
+</div>
+
+<section
+    id="productsGrid"
+    class="products-grid"
+>
+
+```
+<div
+    id="emptyProducts"
+    class="empty-products"
+>
+
+    <h3>
+        Aucune fiche publiée
+    </h3>
+
+    <p>
+        Crée ta première fiche ci-dessous
+        avec une vraie photo de ton produit
+        ou de ton œuvre.
+    </p>
+
+</div>
+```
+
+</section>
+
+<!-- =========================
+     CREER UNE FICHE
+========================= -->
+
+<div class="section-title">
+
+```
+<h2>
+    Créer ma fiche
+</h2>
+```
+
+</div>
+
+<section class="create-box">
+
+```
+<h3>
+    Publier un produit ou une œuvre
+</h3>
+
+<br>
+
+<input
+    type="text"
+    id="productName"
+    placeholder="Nom du produit ou de l'œuvre"
+>
+
+<input
+    type="number"
+    id="productPrice"
+    placeholder="Prix en FCFA"
+    min="0"
+>
+
+<textarea
+    id="productDescription"
+    placeholder="Description du produit ou de l'œuvre"
+></textarea>
+
+<input
+    type="file"
+    id="productImage"
+    accept="image/*"
+    onchange="previewImage(event)"
+>
+
+<img
+    id="imagePreview"
+    class="image-preview"
+    alt="Aperçu"
+>
+
+<button
+    type="button"
+    class="primary-button"
+    onclick="ajouterProduit()"
+>
+    Publier la fiche
+</button>
+```
+
+</section>
+
+<!-- =========================
+     FONCTIONNALITES
+========================= -->
+
+<div class="section-title">
+
+```
+<h2>
+    Ikagne
+</h2>
+```
+
+</div>
+
+<section class="products-grid">
+
+```
+<div class="create-box">
+
+    <h3>
+        Boutique
+    </h3>
+
+    <p>
+        Présentez vos produits et œuvres
+        avec leurs propres photos.
+    </p>
+
+</div>
 
 
-    <!-- Connexion / Inscription -->
-    <section class="buttons">
+<div class="create-box">
 
-        <input
-            type="email"
-            id="email"
-            placeholder="Votre e-mail"
-            required
-        >
+    <h3>
+        Vidéos
+    </h3>
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Mot de passe"
-            required
-        >
+    <p>
+        Préparez votre espace pour publier
+        vos vidéos marketing.
+    </p>
 
-        <button type="button" onclick="creerCompte()">
-            Créer un compte
-        </button>
-
-        <button type="button" onclick="connecterCompte()">
-            Se connecter
-        </button>
-
-        <button type="button" id="logoutBtn">
-            Se déconnecter
-        </button>
-
-        <p id="userStatus">
-            Aucun utilisateur connecté
-        </p>
-
-    </section>
+</div>
 
 
-    <!-- Présentation -->
-    <section class="hero">
+<div class="create-box">
 
-        <h2>
-            Vendez, communiquez et développez votre activité
-        </h2>
+    <h3>
+        Messages
+    </h3>
 
-        <p>
-            Ikagne permet aux utilisateurs de créer une boutique,
-            publier des vidéos marketing et discuter avec leurs clients.
-        </p>
+    <p>
+        Votre espace de communication
+        avec les clients.
+    </p>
 
-    </section>
+</div>
 
 
-    <!-- Fonctionnalités -->
-    <section class="features">
+<div class="create-box">
 
-        <div>
-            <h3>🛒 Boutique</h3>
-            <p>Créez votre vitrine et vendez vos produits.</p>
-        </div>
+    <h3>
+        Paiements
+    </h3>
 
-        <div>
-            <h3>🎬 Vidéos</h3>
-            <p>Publiez des vidéos courtes pour votre marketing.</p>
-        </div>
+    <p>
+        Préparation de l'intégration
+        Mobile Money.
+    </p>
 
-        <div>
-            <h3>💬 Discussion</h3>
-            <p>Communiquez avec vos clients en privé.</p>
-        </div>
+</div>
+```
 
-        <div>
-            <h3>💳 Paiement</h3>
-            <p>Mobile Money Afrique de l'Ouest.</p>
-        </div>
+</section>
 
-    </section>
+<!-- =========================
+     COMPTE FIREBASE
+========================= -->
+
+<section class="auth-box">
+
+```
+<h2>
+    Mon compte Ikagne
+</h2>
+
+<input
+    type="email"
+    id="email"
+    placeholder="Votre e-mail"
+    autocomplete="email"
+>
+
+<input
+    type="password"
+    id="password"
+    placeholder="Mot de passe"
+    autocomplete="current-password"
+>
+
+<div class="auth-buttons">
+
+    <button
+        type="button"
+        class="primary-button"
+        onclick="creerCompte()"
+    >
+        Créer un compte
+    </button>
+
+    <button
+        type="button"
+        class="secondary-button"
+        onclick="connecterCompte()"
+    >
+        Se connecter
+    </button>
+
+    <button
+        type="button"
+        class="danger-button"
+        id="logoutBtn"
+    >
+        Se déconnecter
+    </button>
+
+</div>
+
+<p id="userStatus">
+    Aucun utilisateur connecté
+</p>
+```
+
+</section>
 
 </main>
 
+<!-- =========================
+     FENETRE DETAIL PRODUIT
+========================= -->
 
-<!-- Navigation -->
+<div
+    id="productModal"
+    class="modal"
+    onclick="fermerModalExterieur(event)"
+>
+
+```
+<div class="modal-content">
+
+    <button
+        type="button"
+        class="close-modal"
+        onclick="fermerProduit()"
+    >
+        ×
+    </button>
+
+    <img
+        id="modalProductImage"
+        src=""
+        alt="Produit"
+    >
+
+    <h2 id="modalProductTitle"></h2>
+
+    <div id="modalProductPrice"></div>
+
+    <p id="modalProductDescription"></p>
+
+    <div class="modal-actions">
+
+        <button
+            type="button"
+            class="primary-button"
+            onclick="contacterVendeur()"
+        >
+            Contacter le vendeur
+        </button>
+
+        <button
+            type="button"
+            class="secondary-button"
+            onclick="acheterProduit()"
+        >
+            Acheter
+        </button>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav class="bottom-nav">
 
-    <a href="#">
-        🏠<br>
-        Accueil
-    </a>
+```
+<button
+    class="active"
+    onclick="allerAccueil()"
+>
+    Accueil
+</button>
 
-    <a href="#">
-        🎬<br>
-        Vidéos
-    </a>
+<button
+    onclick="allerVideos()"
+>
+    Vidéos
+</button>
 
-    <a href="#">
-        🛒<br>
-        Boutique
-    </a>
+<button
+    onclick="allerBoutique()"
+>
+    Boutique
+</button>
 
-    <a href="#">
-        💬<br>
-        Messages
-    </a>
+<button
+    onclick="allerMessages()"
+>
+    Messages
+</button>
+```
 
 </nav>
 
-
 <footer>
 
-    <p>
-        © 2026 Ikagne - Créé par Adama Coulibaly
-    </p>
+```
+© 2026 Ikagne — Commerce & Réseau Social
+```
 
 </footer>
 
+<!-- =========================
+     FIREBASE
+========================= -->
 
-<!-- Firebase + fonctions Ikagne -->
 <script type="module">
 
-    import { initializeApp }
-        from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    import {
+        initializeApp
+    } from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
     import {
         getAuth,
@@ -164,52 +1011,79 @@
         signInWithEmailAndPassword,
         onAuthStateChanged,
         signOut
-    }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    } from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-
-    /* Configuration Firebase */
 
     const firebaseConfig = {
-        apiKey: "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
-        authDomain: "ikagne.firebaseapp.com",
-        projectId: "ikagne",
-        storageBucket: "ikagne.firebasestorage.app",
-        messagingSenderId: "1081226903315",
-        appId: "1:1081226903315:web:af9aec535fe1b0968a64e6",
-        measurementId: "G-Y855TJMF00"
+
+        apiKey:
+        "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
+
+        authDomain:
+        "ikagne.firebaseapp.com",
+
+        projectId:
+        "ikagne",
+
+        storageBucket:
+        "ikagne.firebasestorage.app",
+
+        messagingSenderId:
+        "1081226903315",
+
+        appId:
+        "1:1081226903315:web:af9aec535fe1b0968a64e6",
+
+        measurementId:
+        "G-Y855TJMF00"
     };
 
 
-    /* Initialisation Firebase */
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    const app =
+        initializeApp(firebaseConfig);
 
 
-    /* Création de compte */
+    const auth =
+        getAuth(app);
 
-    async function creerCompte() {
+
+    /* =========================
+       CREATION COMPTE
+    ========================= */
+
+    window.creerCompte =
+    async function () {
 
         const email =
-            document.getElementById("email").value.trim();
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
 
         const password =
-            document.getElementById("password").value;
+            document
+            .getElementById("password")
+            .value;
 
 
         if (!email || !password) {
+
             alert(
                 "Veuillez remplir votre e-mail et votre mot de passe."
             );
+
             return;
         }
 
 
         if (password.length < 6) {
+
             alert(
                 "Le mot de passe doit contenir au moins 6 caractères."
             );
+
             return;
         }
 
@@ -223,39 +1097,58 @@
                     password
                 );
 
-            alert("Compte Ikagne créé avec succès !");
+
+            alert(
+                "Compte Ikagne créé avec succès !"
+            );
+
 
             console.log(
                 "UID :",
                 resultat.user.uid
             );
 
-        } catch (erreur) {
+        }
 
-            alert(
-                "Erreur : " + erreur.message
-            );
+        catch (erreur) {
 
             console.error(erreur);
+
+            alert(
+                "Erreur : " +
+                erreur.message
+            );
         }
-    }
+
+    };
 
 
-    /* Connexion */
+    /* =========================
+       CONNEXION
+    ========================= */
 
-    async function connecterCompte() {
+    window.connecterCompte =
+    async function () {
 
         const email =
-            document.getElementById("email").value.trim();
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
 
         const password =
-            document.getElementById("password").value;
+            document
+            .getElementById("password")
+            .value;
 
 
         if (!email || !password) {
+
             alert(
                 "Veuillez remplir votre e-mail et votre mot de passe."
             );
+
             return;
         }
 
@@ -269,115 +1162,726 @@
                     password
                 );
 
-            alert("Connexion réussie !");
+
+            alert(
+                "Connexion réussie !"
+            );
+
 
             console.log(
-                "Utilisateur connecté :",
+                "Utilisateur :",
                 resultat.user.email
             );
 
-        } catch (erreur) {
+        }
+
+        catch (erreur) {
+
+            console.error(erreur);
 
             alert(
                 "Erreur de connexion : " +
                 erreur.message
             );
-
-            console.error(erreur);
         }
-    }
+
+    };
 
 
-    /* Déconnexion */
+    /* =========================
+       DECONNEXION
+    ========================= */
 
     document
-        .getElementById("logoutBtn")
-        .addEventListener("click", async () => {
+    .getElementById("logoutBtn")
+    .addEventListener(
+        "click",
+        async function () {
 
             try {
 
                 await signOut(auth);
 
-                alert("Vous êtes déconnecté.");
-
-            } catch (error) {
-
-                console.error(
-                    "Erreur de déconnexion :",
-                    error
+                alert(
+                    "Vous êtes déconnecté."
                 );
+
+            }
+
+            catch (erreur) {
+
+                console.error(erreur);
 
                 alert(
                     "Erreur lors de la déconnexion."
                 );
             }
 
-        });
+        }
+    );
 
 
-    /* État de connexion */
+    /* =========================
+       ETAT UTILISATEUR
+    ========================= */
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(
+        auth,
+        function (user) {
 
-        const userStatus =
-            document.getElementById("userStatus");
+            const status =
+                document
+                .getElementById("userStatus");
 
 
-        if (user) {
+            if (user) {
 
-            console.log(
-                "Utilisateur connecté :",
-                user.email
+                status.textContent =
+                    "Connecté : " +
+                    user.email;
+
+            }
+
+            else {
+
+                status.textContent =
+                    "Aucun utilisateur connecté";
+
+            }
+
+        }
+    );
+
+</script>
+
+<!-- =========================
+     LOGIQUE IKAGNE
+========================= -->
+
+<script>
+
+    let produits = [];
+
+    let produitSelectionne = null;
+
+
+    /* =========================
+       CHARGER LES PRODUITS
+    ========================= */
+
+    function chargerProduits() {
+
+        const sauvegarde =
+            localStorage.getItem(
+                "ikagne_produits"
             );
 
-            userStatus.textContent =
-                "Connecté : " + user.email;
 
-        } else {
+        if (sauvegarde) {
 
-            console.log(
-                "Aucun utilisateur connecté"
-            );
+            try {
 
-            userStatus.textContent =
-                "Aucun utilisateur connecté";
+                produits =
+                    JSON.parse(sauvegarde);
+
+            }
+
+            catch {
+
+                produits = [];
+
+            }
+
         }
 
-    });
+
+        afficherProduits();
+
+    }
 
 
-    /* Rendre les fonctions accessibles aux boutons HTML */
+    /* =========================
+       APERCU IMAGE
+    ========================= */
 
-    window.creerCompte = creerCompte;
-    window.connecterCompte = connecterCompte;
+    function previewImage(event) {
+
+        const fichier =
+            event.target.files[0];
 
 
-    /* Recherche */
+        const preview =
+            document.getElementById(
+                "imagePreview"
+            );
 
-    window.searchContent = function () {
 
-        const recherche =
+        if (!fichier) {
+
+            preview.style.display =
+                "none";
+
+            return;
+        }
+
+
+        const lecteur =
+            new FileReader();
+
+
+        lecteur.onload =
+        function () {
+
+            preview.src =
+                lecteur.result;
+
+            preview.style.display =
+                "block";
+
+        };
+
+
+        lecteur.readAsDataURL(fichier);
+
+    }
+
+
+    /* =========================
+       AJOUT PRODUIT
+    ========================= */
+
+    function ajouterProduit() {
+
+        const nom =
             document
-                .getElementById("searchInput")
-                .value
-                .trim();
+            .getElementById("productName")
+            .value
+            .trim();
 
-        if (!recherche) {
+
+        const prix =
+            document
+            .getElementById("productPrice")
+            .value
+            .trim();
+
+
+        const description =
+            document
+            .getElementById("productDescription")
+            .value
+            .trim();
+
+
+        const fichier =
+            document
+            .getElementById("productImage")
+            .files[0];
+
+
+        if (!nom) {
 
             alert(
-                "Entrez quelque chose à rechercher."
+                "Entrez le nom du produit ou de l'œuvre."
             );
 
             return;
         }
 
-        alert(
-            "Recherche : " + recherche
+
+        if (!prix) {
+
+            alert(
+                "Entrez le prix."
+            );
+
+            return;
+        }
+
+
+        if (!description) {
+
+            alert(
+                "Entrez une description."
+            );
+
+            return;
+        }
+
+
+        if (!fichier) {
+
+            alert(
+                "Ajoutez une vraie photo."
+            );
+
+            return;
+        }
+
+
+        const lecteur =
+            new FileReader();
+
+
+        lecteur.onload =
+        function () {
+
+            const nouveauProduit = {
+
+                id:
+                Date.now(),
+
+                nom:
+                nom,
+
+                prix:
+                Number(prix),
+
+                description:
+                description,
+
+                image:
+                lecteur.result
+
+            };
+
+
+            produits.push(
+                nouveauProduit
+            );
+
+
+            localStorage.setItem(
+                "ikagne_produits",
+                JSON.stringify(produits)
+            );
+
+
+            document
+            .getElementById("productName")
+            .value = "";
+
+
+            document
+            .getElementById("productPrice")
+            .value = "";
+
+
+            document
+            .getElementById("productDescription")
+            .value = "";
+
+
+            document
+            .getElementById("productImage")
+            .value = "";
+
+
+            document
+            .getElementById("imagePreview")
+            .style.display =
+                "none";
+
+
+            afficherProduits();
+
+
+            alert(
+                "Votre fiche a été créée."
+            );
+
+        };
+
+
+        lecteur.readAsDataURL(fichier);
+
+    }
+
+
+    /* =========================
+       AFFICHER PRODUITS
+    ========================= */
+
+    function afficherProduits(
+        liste = produits
+    ) {
+
+        const grille =
+            document
+            .getElementById("productsGrid");
+
+
+        const compteur =
+            document
+            .getElementById("productCount");
+
+
+        grille.innerHTML = "";
+
+
+        compteur.textContent =
+            liste.length;
+
+
+        if (liste.length === 0) {
+
+            grille.innerHTML = `
+
+                <div class="empty-products">
+
+                    <h3>
+                        Aucune fiche publiée
+                    </h3>
+
+                    <p>
+                        Crée ta première fiche
+                        avec une vraie photo.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        liste.forEach(
+            function (produit) {
+
+                const carte =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                carte.className =
+                    "product-card";
+
+
+                carte.innerHTML = `
+
+                    <img
+                        class="product-photo"
+                        src="${produit.image}"
+                        alt="${echapper(produit.nom)}"
+                    >
+
+                    <div class="product-info">
+
+                        <h3>
+                            ${echapper(produit.nom)}
+                        </h3>
+
+                        <div class="product-price">
+                            ${formaterPrix(produit.prix)}
+                        </div>
+
+                        <p class="product-description">
+                            ${echapper(produit.description)}
+                        </p>
+
+                        <div class="product-actions">
+
+                            <button
+                                class="view-product"
+                                onclick="ouvrirProduit(${produit.id})"
+                            >
+                                Voir
+                            </button>
+
+                        </div>
+
+                    </div>
+                `;
+
+
+                grille.appendChild(
+                    carte
+                );
+
+            }
         );
-    };
+
+    }
+
+
+    /* =========================
+       OUVRIR PRODUIT
+    ========================= */
+
+    function ouvrirProduit(id) {
+
+        const produit =
+            produits.find(
+                function (element) {
+
+                    return element.id === id;
+
+                }
+            );
+
+
+        if (!produit) {
+            return;
+        }
+
+
+        produitSelectionne =
+            produit;
+
+
+        document
+        .getElementById(
+            "modalProductImage"
+        )
+        .src =
+            produit.image;
+
+
+        document
+        .getElementById(
+            "modalProductTitle"
+        )
+        .textContent =
+            produit.nom;
+
+
+        document
+        .getElementById(
+            "modalProductPrice"
+        )
+        .textContent =
+            formaterPrix(
+                produit.prix
+            );
+
+
+        document
+        .getElementById(
+            "modalProductDescription"
+        )
+        .textContent =
+            produit.description;
+
+
+        document
+        .getElementById(
+            "productModal"
+        )
+        .classList.add(
+            "active"
+        );
+
+    }
+
+
+    /* =========================
+       FERMER PRODUIT
+    ========================= */
+
+    function fermerProduit() {
+
+        document
+        .getElementById(
+            "productModal"
+        )
+        .classList.remove(
+            "active"
+        );
+
+    }
+
+
+    function fermerModalExterieur(
+        event
+    ) {
+
+        if (
+            event.target.id ===
+            "productModal"
+        ) {
+
+            fermerProduit();
+
+        }
+
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    function contacterVendeur() {
+
+        if (!produitSelectionne) {
+            return;
+        }
+
+
+        alert(
+            "La messagerie Ikagne va ouvrir la conversation avec le vendeur de : " +
+            produitSelectionne.nom
+        );
+
+    }
+
+
+    /* =========================
+       ACHAT
+    ========================= */
+
+    function acheterProduit() {
+
+        if (!produitSelectionne) {
+            return;
+        }
+
+
+        alert(
+            "Commande sélectionnée : " +
+            produitSelectionne.nom +
+            " — " +
+            formaterPrix(
+                produitSelectionne.prix
+            )
+        );
+
+    }
+
+
+    /* =========================
+       RECHERCHE
+    ========================= */
+
+    function rechercherProduits() {
+
+        const recherche =
+            document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .trim()
+            .toLowerCase();
+
+
+        if (!recherche) {
+
+            afficherProduits();
+
+            return;
+        }
+
+
+        const resultat =
+            produits.filter(
+                function (produit) {
+
+                    return (
+                        produit.nom
+                        .toLowerCase()
+                        .includes(recherche)
+                        ||
+                        produit.description
+                        .toLowerCase()
+                        .includes(recherche)
+                    );
+
+                }
+            );
+
+
+        afficherProduits(
+            resultat
+        );
+
+    }
+
+
+    /* =========================
+       FORMAT PRIX
+    ========================= */
+
+    function formaterPrix(prix) {
+
+        return Number(prix)
+            .toLocaleString("fr-FR")
+            + " FCFA";
+
+    }
+
+
+    /* =========================
+       SECURITE TEXTE
+    ========================= */
+
+    function echapper(texte) {
+
+        return String(texte)
+            .replaceAll("&", "&amp;")
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll('"', "&quot;")
+            .replaceAll("'", "&#039;");
+
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    function allerAccueil() {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function allerVideos() {
+
+        alert(
+            "Espace Vidéos Ikagne."
+        );
+
+    }
+
+
+    function allerBoutique() {
+
+        document
+        .getElementById(
+            "productsGrid"
+        )
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function allerMessages() {
+
+        alert(
+            "Espace Messages Ikagne."
+        );
+
+    }
+
+
+    /* =========================
+       DEMARRAGE
+    ========================= */
+
+    chargerProduits();
 
 </script>
 
 </body>
+
 </html>
-```

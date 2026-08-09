@@ -25,7 +25,32 @@
     appId: "1:1081226903315:web:af9aec535fe1b0968a64e6",
     measurementId: "G-Y855TJMF00"
   };<script>
-  async function creerCompte() {
+  async function creerCompte()async function connecterCompte() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!email || !password) {
+        alert("Veuillez remplir votre e-mail et votre mot de passe.");
+        return;
+    }
+
+    try {
+        const resultat = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        alert("Connexion réussie !");
+        console.log("Utilisateur connecté :", resultat.user.email);
+
+    } catch (erreur) {
+        alert("Erreur de connexion : " + erreur.message);
+        console.error(erreur);
+    }
+}
+
+window.connecterCompte = connecterCompte; {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 

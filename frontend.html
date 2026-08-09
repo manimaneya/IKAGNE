@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,243 +8,117 @@
 
     <title>Ikagne - Commerce & Réseau Social</title>
 
-    <link rel="stylesheet" href="style.css"> <link rel="manifest" href="manifest.json">
-</head> <link rel="stylesheet" href="css/style.css">
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-  import {
-    getAuth,
-    createUserWithEmailAndPassword
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
-    authDomain: "ikagne.firebaseapp.com",
-    projectId: "ikagne",
-    storageBucket: "ikagne.firebasestorage.app",
-    messagingSenderId: "1081226903315",
-    appId: "1:1081226903315:web:af9aec535fe1b0968a64e6",
-    measurementId: "G-Y855TJMF00"
-  };<script>
-  async function creerCompte()async function connecterCompte() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+<body>
 
-    if (!email || !password) {
-        alert("Veuillez remplir votre e-mail et votre mot de passe.");
-        return;
-    }
-
-    try {
-        const resultat = await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-        alert("Connexion réussie !");
-        console.log("Utilisateur connecté :", resultat.user.email);
-
-    } catch (erreur) {
-        alert("Erreur de connexion : " + erreur.message);
-        console.error(erreur);
-    }
-}
-
-window.connecterCompte = connecterCompte; {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    if (!email || !password) {
-      alert("Veuillez remplir votre e-mail et votre mot de passe.");
-      return;
-    }
-
-    if (password.length < 6) {
-      alert("Le mot de passe doit contenir au moins 6 caractères.");
-      return;
-    }
-
-    await inscrireUtilisateur(email, password);
-  }
-</script>
-
-  const app = initializeApp(firebaseConfig);const auth = getAuth(app);
-  const auth = getAuth(app);
-
-  window.inscrireUtilisateur = async function(email, password) {
-    try {
-      const resultat = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-
-      alert("Compte Ikagne créé avec succès !");
-      console.log("UID :", resultat.user.uid);
-
-    } catch (erreur) {
-      alert("Erreur : " + erreur.message);
-      console.error(erreur);
-    }
-  };
-</script>
-<script type="module">
-  import {
-    signInWithEmailAndPassword
-  } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-  window.connecterCompte = async function() {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    if (!email || !password) {
-      alert("Veuillez remplir votre e-mail et votre mot de passe.");
-      return;
-    }
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert("Connexion Ikagne réussie !");
-    } catch (erreur) {
-      alert("Connexion impossible : " + erreur.message);
-    }
-  };
-</script> <script type="module">
-  import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-  {
-      onAuthStateChanged(auth, (user) => {
-  const userStatus = document.getElementById("userStatus");
-
-  if (user) {
-    userStatus.textContent = "Connecté : " + user.email;
-  } else {
-    userStatus.textContent = "Aucun utilisateur connecté";
-  }
-});
-</script><script type="module">
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
-
-  document.getElementById("logoutBtn").addEventListener("click", async () => {
-    try {
-      await signOut(auth);
-      alert("Vous êtes déconnecté.");
-    } catch (error) {
-      console.error("Erreur de déconnexion :", error);
-    }
-  });
-</script><body> <div class="app">
-
-    <header class="top-header">
-        <img src="assets/logo.png" alt="Logo Ikagne" class="logo">
-        <h1>Ikagne</h1>
-    </header<div class="search-box">
-    <input
-        type="search"
-        id="searchInput"
-        placeholder="Rechercher utilisateurs ou vidéos...">
-
-    <button onclick="searchContent()">
-        🔍 Rechercher
-    </button>
-</div>
-
-   <p id="userStatus">Vérification de la connexion...</p>  <main>
-        <section class="welcome">
-            <h2>Bienvenue sur Ikagne</h2>
-            <p>Communique, partage tes vidéos et développe ton commerce.</p>
-        </section>
-
-        <div class="buttons">
-    <input type="email" id="email" placeholder="Votre e-mail" required>
-
-    <input type="password" id="password" placeholder="Mot de passe" required>
-
-    <button type="button" onclick="creerCompte()">
-        Créer un compte
-    <button id="logoutBtn">Se déconnecter</button>/button>
-
-    <button type="button" onclick="connecterCompte()">
-    Se connecter
-</button>
-</div>
-
-</div>
-
-    <header>
-        <h1>🚀 Ikagne</h1>
-        <p>La plateforme digitale africaine</p>
-    </header>
+<header class="top-header">
+    <img src="assets/logo.png" alt="Logo Ikagne" class="logo">
+    <h1>Ikagne</h1>
+</header>
 
 
-    <main>
+<main>
 
-        <section class="hero">
-            <h2>Vendez, communiquez et développez votre activité</h2>
+    <!-- Recherche -->
+    <section class="search-box">
 
-            <p>
-                Ikagne permet aux utilisateurs de créer une boutique,
-                publier des vidéos marketing et discuter avec leurs clients.
-            </p>
+        <input
+            type="search"
+            id="searchInput"
+            placeholder="Rechercher utilisateurs ou vidéos..."
+        >
 
-            <button onclick="connexion()">Se connecter</button> </section>body_><script src="js/login.js"></script>
+        <button type="button" onclick="searchContent()">
+            🔍 Rechercher
+        </button>
 
-
-        <section class="features">
-
-            <div>
-                <h3>🛒 Boutique</h3>
-                <p>Créez votre vitrine et vendez vos produits.</p>
-            </div>
+    </section>
 
 
-            <div>
-                <h3>🎬 Vidéos</h3>
-                <p>Publiez des vidéos courtes pour votre marketing.</p>
-            </div>
+    <!-- Connexion / Inscription -->
+    <section class="buttons">
 
+        <input
+            type="email"
+            id="email"
+            placeholder="Votre e-mail"
+            required
+        >
 
-            <div>
-                <h3>💬 Discussion</h3>
-                <p>Communiquez avec vos clients en privé.</p>
-            </div>
+        <input
+            type="password"
+            id="password"
+            placeholder="Mot de passe"
+            required
+        >
 
+        <button type="button" onclick="creerCompte()">
+            Créer un compte
+        </button>
 
-            <div>
-                <h3>💳 Paiement</h3>
-                <p>Mobile Money Afrique de l'Ouest.</p>
-            </div>
+        <button type="button" onclick="connecterCompte()">
+            Se connecter
+        </button>
 
-        </section>
+        <button type="button" id="logoutBtn">
+            Se déconnecter
+        </button>
 
-
-    </main>
-
-
-    <footer>
-
-        <p>
-            © 2026 Ikagne - Créé par Adama Coulibaly
+        <p id="userStatus">
+            Aucun utilisateur connecté
         </p>
 
-    </footer>
+    </section>
 
 
-    <script src="app.js"></script> <script src="js/app.js"></script>
-<script src="js/search.js"></script>
- </body> <nav class="navbar">
+    <!-- Présentation -->
+    <section class="hero">
+
+        <h2>
+            Vendez, communiquez et développez votre activité
+        </h2>
+
+        <p>
+            Ikagne permet aux utilisateurs de créer une boutique,
+            publier des vidéos marketing et discuter avec leurs clients.
+        </p>
+
+    </section>
+
+
+    <!-- Fonctionnalités -->
+    <section class="features">
+
+        <div>
+            <h3>🛒 Boutique</h3>
+            <p>Créez votre vitrine et vendez vos produits.</p>
+        </div>
+
+        <div>
+            <h3>🎬 Vidéos</h3>
+            <p>Publiez des vidéos courtes pour votre marketing.</p>
+        </div>
+
+        <div>
+            <h3>💬 Discussion</h3>
+            <p>Communiquez avec vos clients en privé.</p>
+        </div>
+
+        <div>
+            <h3>💳 Paiement</h3>
+            <p>Mobile Money Afrique de l'Ouest.</p>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- Navigation -->
+<nav class="bottom-nav">
 
     <a href="#">
         🏠<br>
@@ -267,4 +142,242 @@ window.connecterCompte = connecterCompte; {
 
 </nav>
 
+
+<footer>
+
+    <p>
+        © 2026 Ikagne - Créé par Adama Coulibaly
+    </p>
+
+</footer>
+
+
+<!-- Firebase + fonctions Ikagne -->
+<script type="module">
+
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        onAuthStateChanged,
+        signOut
+    }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+    /* Configuration Firebase */
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
+        authDomain: "ikagne.firebaseapp.com",
+        projectId: "ikagne",
+        storageBucket: "ikagne.firebasestorage.app",
+        messagingSenderId: "1081226903315",
+        appId: "1:1081226903315:web:af9aec535fe1b0968a64e6",
+        measurementId: "G-Y855TJMF00"
+    };
+
+
+    /* Initialisation Firebase */
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+
+    /* Création de compte */
+
+    async function creerCompte() {
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+
+        if (!email || !password) {
+            alert(
+                "Veuillez remplir votre e-mail et votre mot de passe."
+            );
+            return;
+        }
+
+
+        if (password.length < 6) {
+            alert(
+                "Le mot de passe doit contenir au moins 6 caractères."
+            );
+            return;
+        }
+
+
+        try {
+
+            const resultat =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+            alert("Compte Ikagne créé avec succès !");
+
+            console.log(
+                "UID :",
+                resultat.user.uid
+            );
+
+        } catch (erreur) {
+
+            alert(
+                "Erreur : " + erreur.message
+            );
+
+            console.error(erreur);
+        }
+    }
+
+
+    /* Connexion */
+
+    async function connecterCompte() {
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+
+        if (!email || !password) {
+            alert(
+                "Veuillez remplir votre e-mail et votre mot de passe."
+            );
+            return;
+        }
+
+
+        try {
+
+            const resultat =
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+            alert("Connexion réussie !");
+
+            console.log(
+                "Utilisateur connecté :",
+                resultat.user.email
+            );
+
+        } catch (erreur) {
+
+            alert(
+                "Erreur de connexion : " +
+                erreur.message
+            );
+
+            console.error(erreur);
+        }
+    }
+
+
+    /* Déconnexion */
+
+    document
+        .getElementById("logoutBtn")
+        .addEventListener("click", async () => {
+
+            try {
+
+                await signOut(auth);
+
+                alert("Vous êtes déconnecté.");
+
+            } catch (error) {
+
+                console.error(
+                    "Erreur de déconnexion :",
+                    error
+                );
+
+                alert(
+                    "Erreur lors de la déconnexion."
+                );
+            }
+
+        });
+
+
+    /* État de connexion */
+
+    onAuthStateChanged(auth, (user) => {
+
+        const userStatus =
+            document.getElementById("userStatus");
+
+
+        if (user) {
+
+            console.log(
+                "Utilisateur connecté :",
+                user.email
+            );
+
+            userStatus.textContent =
+                "Connecté : " + user.email;
+
+        } else {
+
+            console.log(
+                "Aucun utilisateur connecté"
+            );
+
+            userStatus.textContent =
+                "Aucun utilisateur connecté";
+        }
+
+    });
+
+
+    /* Rendre les fonctions accessibles aux boutons HTML */
+
+    window.creerCompte = creerCompte;
+    window.connecterCompte = connecterCompte;
+
+
+    /* Recherche */
+
+    window.searchContent = function () {
+
+        const recherche =
+            document
+                .getElementById("searchInput")
+                .value
+                .trim();
+
+        if (!recherche) {
+
+            alert(
+                "Entrez quelque chose à rechercher."
+            );
+
+            return;
+        }
+
+        alert(
+            "Recherche : " + recherche
+        );
+    };
+
+</script>
+
+</body>
 </html>
+```

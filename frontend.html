@@ -93,8 +93,7 @@
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
   {
-      console.log("Utilisateur connecté :", user.email);
-   onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(auth, (user) => {
   const userStatus = document.getElementById("userStatus");
 
   if (user) {
@@ -102,10 +101,7 @@
   } else {
     userStatus.textContent = "Aucun utilisateur connecté";
   }
-}); } else {
-      console.log("Aucun utilisateur connecté");
-    }
-  });
+});
 </script><script type="module">
   import { signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 

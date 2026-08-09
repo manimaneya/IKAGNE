@@ -1,1161 +1,1413 @@
+<!-- 001 -->
 <!DOCTYPE html>
-
+<!-- 002 -->
 <html lang="fr">
 
+<!-- 003 -->
 <head>
+
+    <!-- 004 -->
     <meta charset="UTF-8">
+
+    <!-- 005 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Ikagne - Commerce & Réseau Social</title>
+    <!-- 006 -->
+    <title>Ikagne - Commerce & Réseau Social</title>
 
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
+    <!-- 007 -->
+    <meta name="theme-color" content="#d49a32">
 
-<meta name="theme-color" content="#d49a32">
+    <!-- 008 -->
+    <link rel="manifest" href="manifest.json">
 
-<style>
+    <!-- 009 -->
+    <style>
 
-    :root {
-        --rose: #f4cbd7;
-        --rose-fonce: #d94f76;
-        --jaune-oxyde: #d49a32;
-        --jaune-fonce: #a86f16;
-        --blanc: #ffffff;
-        --noir: #222222;
-        --gris: #777777;
-        --fond: #fff8fa;
-    }
+        /* ==============================
+           VARIABLES
+        ============================== */
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+        :root {
+            --rose: #f4cbd7;
+            --rose-fonce: #d94f76;
+            --jaune: #d49a32;
+            --jaune-fonce: #a86f16;
+            --blanc: #ffffff;
+            --noir: #222222;
+            --gris: #777777;
+            --fond: #fff8fa;
+            --vert: #238636;
+            --rouge: #c62828;
+        }
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: var(--fond);
-        color: var(--noir);
-        padding-bottom: 85px;
-    }
+        /* ==============================
+           RESET
+        ============================== */
 
-    button,
-    input,
-    textarea {
-        font-family: inherit;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    button {
-        cursor: pointer;
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fond);
+            color: var(--noir);
+            padding-bottom: 90px;
+        }
 
-    /* =========================
-       HEADER
-    ========================= */
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
 
-    .top-header {
-        min-height: 82px;
-        padding: 12px 18px;
-        display: flex;
-        align-items: center;
-        gap: 13px;
-        color: white;
-        background: linear-gradient(
-            135deg,
-            var(--rose-fonce),
-            var(--jaune-oxyde)
-        );
-        box-shadow: 0 5px 18px #0003;
-    }
+        button {
+            cursor: pointer;
+        }
 
-    .logo {
-        width: 58px;
-        height: 58px;
-        object-fit: contain;
-        background: white;
-        padding: 4px;
-        border-radius: 15px;
-        box-shadow:
-            0 5px 0 #8d4b5d,
-            0 8px 16px #0004;
-    }
+        /* ==============================
+           HEADER
+        ============================== */
 
-    .brand h1 {
-        font-size: 30px;
-        line-height: 1;
-        text-shadow: 2px 3px 0 #0004;
-    }
+        .top-header {
+            min-height: 82px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            color: white;
+            background: linear-gradient(
+                135deg,
+                var(--rose-fonce),
+                var(--jaune)
+            );
+            box-shadow: 0 5px 18px #0003;
+        }
 
-    .brand p {
-        margin-top: 5px;
-        font-size: 11px;
-    }
+        .logo {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+            border-radius: 15px;
+            box-shadow:
+                0 5px 0 #8d4b5d,
+                0 8px 16px #0004;
+        }
 
-    /* =========================
-       MAIN
-    ========================= */
+        .brand h1 {
+            font-size: 30px;
+            line-height: 1;
+            text-shadow: 2px 3px 0 #0004;
+        }
 
-    main {
-        width: 100%;
-        max-width: 1100px;
-        margin: auto;
-        padding: 15px;
-    }
+        .brand p {
+            margin-top: 5px;
+            font-size: 11px;
+        }
 
-    /* =========================
-       RECHERCHE
-    ========================= */
+        /* ==============================
+           PAGES
+        ============================== */
 
-    .search-box {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 18px;
-    }
+        .page {
+            display: none;
+        }
 
-    .search-box input {
-        flex: 1;
-        min-width: 0;
-        padding: 14px;
-        border: 2px solid var(--rose);
-        border-radius: 14px;
-        background: white;
-        outline: none;
-        font-size: 15px;
-    }
+        .page.active {
+            display: block;
+        }
 
-    .search-box input:focus {
-        border-color: var(--jaune-oxyde);
-    }
+        main {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 15px;
+        }
 
-    .search-box button {
-        border: none;
-        padding: 0 18px;
-        border-radius: 14px;
-        color: white;
-        background: var(--jaune-oxyde);
-        font-weight: bold;
-    }
+        /* ==============================
+           RECHERCHE
+        ============================== */
 
-    /* =========================
-       HERO
-    ========================= */
+        .search-box {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
 
-    .hero {
-        padding: 25px 20px;
-        margin-bottom: 20px;
-        border-radius: 22px;
-        background:
-            linear-gradient(
+        .search-box input {
+            flex: 1;
+            min-width: 0;
+            padding: 14px;
+            border: 2px solid var(--rose);
+            border-radius: 14px;
+            background: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-box input:focus {
+            border-color: var(--jaune);
+        }
+
+        .search-box button {
+            border: none;
+            padding: 0 18px;
+            border-radius: 14px;
+            color: white;
+            background: var(--jaune);
+            font-weight: bold;
+        }
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            padding: 25px 20px;
+            margin-bottom: 20px;
+            border-radius: 22px;
+            background: linear-gradient(
                 135deg,
                 white,
                 var(--rose)
             );
-        border-left: 6px solid var(--jaune-oxyde);
-        box-shadow: 0 5px 18px #0002;
-    }
-
-    .hero h2 {
-        font-size: 25px;
-        margin-bottom: 9px;
-    }
-
-    .hero p {
-        color: #555;
-        line-height: 1.5;
-    }
-
-    /* =========================
-       BOUTONS
-    ========================= */
-
-    .primary-button,
-    .secondary-button,
-    .danger-button {
-        border: none;
-        padding: 12px 16px;
-        border-radius: 12px;
-        font-weight: bold;
-    }
-
-    .primary-button {
-        background: var(--rose-fonce);
-        color: white;
-    }
-
-    .secondary-button {
-        background: var(--jaune-oxyde);
-        color: white;
-    }
-
-    .danger-button {
-        background: #555;
-        color: white;
-    }
-
-    /* =========================
-       TITRES
-    ========================= */
-
-    .section-title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 25px 0 13px;
-    }
-
-    .section-title h2 {
-        font-size: 21px;
-    }
-
-    /* =========================
-       FILTRES
-    ========================= */
-
-    .categories {
-        display: flex;
-        gap: 9px;
-        overflow-x: auto;
-        padding-bottom: 5px;
-    }
-
-    .category {
-        flex-shrink: 0;
-        border: 2px solid var(--rose);
-        background: white;
-        padding: 10px 15px;
-        border-radius: 20px;
-    }
-
-    /* =========================
-       PRODUITS
-    ========================= */
-
-    .products-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-    }
-
-    .empty-products {
-        grid-column: 1 / -1;
-        padding: 35px 20px;
-        text-align: center;
-        border-radius: 18px;
-        background: white;
-        border: 2px dashed var(--rose);
-        color: var(--gris);
-    }
-
-    .product-card {
-        overflow: hidden;
-        background: white;
-        border-radius: 18px;
-        box-shadow: 0 5px 18px #0002;
-    }
-
-    .product-photo {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        display: block;
-        background: #eee;
-    }
-
-    .product-info {
-        padding: 13px;
-    }
-
-    .product-info h3 {
-        font-size: 17px;
-        margin-bottom: 7px;
-    }
-
-    .product-price {
-        color: var(--jaune-fonce);
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
-
-    .product-description {
-        color: #666;
-        font-size: 13px;
-        line-height: 1.4;
-        margin-bottom: 11px;
-    }
-
-    .product-actions {
-        display: flex;
-        gap: 7px;
-    }
-
-    .product-actions button {
-        flex: 1;
-        border: none;
-        padding: 10px 5px;
-        border-radius: 9px;
-        font-weight: bold;
-    }
-
-    .view-product {
-        background: var(--rose-fonce);
-        color: white;
-    }
-
-    /* =========================
-       CREATION FICHE
-    ========================= */
-
-    .create-box {
-        background: white;
-        padding: 18px;
-        border-radius: 20px;
-        box-shadow: 0 4px 15px #0001;
-        border-top: 5px solid var(--jaune-oxyde);
-    }
-
-    .create-box input,
-    .create-box textarea {
-        width: 100%;
-        padding: 13px;
-        margin-bottom: 10px;
-        border: 1px solid #ddd;
-        border-radius: 11px;
-        outline: none;
-    }
-
-    .create-box textarea {
-        min-height: 100px;
-        resize: vertical;
-    }
-
-    .image-preview {
-        width: 100%;
-        max-height: 240px;
-        object-fit: contain;
-        display: none;
-        margin-bottom: 12px;
-        border-radius: 14px;
-        background: #f1f1f1;
-    }
-
-    /* =========================
-       AUTHENTIFICATION
-    ========================= */
-
-    .auth-box {
-        background: white;
-        padding: 18px;
-        margin-top: 25px;
-        border-radius: 20px;
-        box-shadow: 0 4px 15px #0001;
-    }
-
-    .auth-box input {
-        width: 100%;
-        padding: 13px;
-        margin-top: 8px;
-        border: 1px solid #ddd;
-        border-radius: 11px;
-    }
-
-    .auth-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 7px;
-        margin-top: 10px;
-    }
-
-    #userStatus {
-        margin-top: 12px;
-        font-size: 13px;
-    }
-
-    /* =========================
-       FENÊTRE PRODUIT
-    ========================= */
-
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 2000;
-        inset: 0;
-        padding: 18px;
-        align-items: center;
-        justify-content: center;
-        background: #0009;
-    }
-
-    .modal.active {
-        display: flex;
-    }
-
-    .modal-content {
-        width: 100%;
-        max-width: 550px;
-        max-height: 92vh;
-        overflow-y: auto;
-        position: relative;
-        padding: 18px;
-        border-radius: 22px;
-        background: white;
-        animation: openModal .2s ease;
-    }
-
-    @keyframes openModal {
-        from {
-            transform: scale(.85);
-            opacity: 0;
+            border-left: 6px solid var(--jaune);
+            box-shadow: 0 5px 18px #0002;
         }
-
-        to {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-
-    .close-modal {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        width: 38px;
-        height: 38px;
-        border: none;
-        border-radius: 50%;
-        background: #eee;
-        font-size: 22px;
-        z-index: 2;
-    }
-
-    #modalProductImage {
-        width: 100%;
-        max-height: 350px;
-        object-fit: contain;
-        border-radius: 15px;
-        background: #f1f1f1;
-        margin-bottom: 15px;
-    }
-
-    #modalProductTitle {
-        font-size: 23px;
-        margin-bottom: 8px;
-    }
-
-    #modalProductPrice {
-        color: var(--jaune-fonce);
-        font-size: 19px;
-        font-weight: bold;
-        margin-bottom: 12px;
-    }
-
-    #modalProductDescription {
-        color: #555;
-        line-height: 1.6;
-    }
-
-    .modal-actions {
-        display: flex;
-        gap: 8px;
-        margin-top: 18px;
-    }
-
-    .modal-actions button {
-        flex: 1;
-        border: none;
-        padding: 13px;
-        border-radius: 12px;
-        font-weight: bold;
-    }
-
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    .bottom-nav {
-        position: fixed;
-        z-index: 1500;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 70px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background: white;
-        border-top: 1px solid #ddd;
-        box-shadow: 0 -4px 15px #0002;
-    }
-
-    .bottom-nav button {
-        border: none;
-        background: none;
-        color: #555;
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .bottom-nav button.active {
-        color: var(--rose-fonce);
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-        padding: 25px 15px;
-        text-align: center;
-        color: #888;
-        font-size: 12px;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (min-width: 700px) {
-
-        .products-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-    }
-
-    @media (max-width: 450px) {
 
         .hero h2 {
+            font-size: 25px;
+            margin-bottom: 9px;
+        }
+
+        .hero p {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* ==============================
+           BOUTONS
+        ============================== */
+
+        .primary-button,
+        .secondary-button,
+        .danger-button {
+            border: none;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        .primary-button {
+            background: var(--rose-fonce);
+            color: white;
+        }
+
+        .secondary-button {
+            background: var(--jaune);
+            color: white;
+        }
+
+        .danger-button {
+            background: #555;
+            color: white;
+        }
+
+        /* ==============================
+           SECTIONS
+        ============================== */
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0 13px;
+        }
+
+        .section-title h2 {
             font-size: 21px;
         }
 
+        /* ==============================
+           CATEGORIES
+        ============================== */
+
+        .categories {
+            display: flex;
+            gap: 9px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .category {
+            flex-shrink: 0;
+            border: 2px solid var(--rose);
+            background: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+
+        .category.active {
+            background: var(--rose-fonce);
+            color: white;
+            border-color: var(--rose-fonce);
+        }
+
+        /* ==============================
+           PRODUITS
+        ============================== */
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .empty-products {
+            grid-column: 1 / -1;
+            padding: 35px 20px;
+            text-align: center;
+            border-radius: 18px;
+            background: white;
+            border: 2px dashed var(--rose);
+            color: var(--gris);
+        }
+
+        .product-card {
+            overflow: hidden;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px #0002;
+        }
+
         .product-photo {
-            height: 145px;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            background: #eee;
+        }
+
+        .product-info {
+            padding: 13px;
+        }
+
+        .product-info h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .product-price {
+            color: var(--jaune-fonce);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 11px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 7px;
+        }
+
+        .product-actions button {
+            flex: 1;
+            border: none;
+            padding: 10px 5px;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .view-product {
+            background: var(--rose-fonce);
+            color: white;
+        }
+
+        /* ==============================
+           BOITE CREATION
+        ============================== */
+
+        .create-box {
+            background: white;
+            padding: 18px;
+            margin-bottom: 18px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px #0001;
+            border-top: 5px solid var(--jaune);
+        }
+
+        .create-box input,
+        .create-box textarea,
+        .create-box select {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 11px;
+            outline: none;
+            background: white;
+        }
+
+        .create-box textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .image-preview {
+            width: 100%;
+            max-height: 240px;
+            object-fit: contain;
+            display: none;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            background: #f1f1f1;
+        }
+
+        /* ==============================
+           AUTHENTIFICATION
+        ============================== */
+
+        .auth-box {
+            background: white;
+            padding: 18px;
+            margin-top: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px #0001;
+        }
+
+        .auth-box input {
+            width: 100%;
+            padding: 13px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 11px;
         }
 
         .auth-buttons {
-            flex-direction: column;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 12px;
+        }
+
+        #userStatus {
+            margin-top: 12px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ==============================
+           VIDEOS
+        ============================== */
+
+        .video-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px #0001;
+        }
+
+        .video-card video {
+            width: 100%;
+            max-height: 450px;
+            border-radius: 14px;
+            background: #111;
+        }
+
+        /* ==============================
+           MESSAGES
+        ============================== */
+
+        .message-box {
+            background: white;
+            padding: 18px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px #0001;
+        }
+
+        .message-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            background: #fff1f5;
+        }
+
+        /* ==============================
+           COMPTE
+        ============================== */
+
+        .account-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px #0001;
+        }
+
+        .account-email {
+            margin: 12px 0;
+            padding: 13px;
+            border-radius: 12px;
+            background: #fff1f5;
+            word-break: break-word;
+        }
+
+        /* ==============================
+           MODAL
+        ============================== */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            padding: 18px;
+            align-items: center;
+            justify-content: center;
+            background: #0009;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 550px;
+            max-height: 92vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 18px;
+            border-radius: 22px;
+            background: white;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #eee;
+            font-size: 22px;
+            z-index: 2;
+        }
+
+        #modalProductImage {
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            border-radius: 15px;
+            background: #f1f1f1;
+            margin-bottom: 15px;
+        }
+
+        #modalProductTitle {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        #modalProductPrice {
+            color: var(--jaune-fonce);
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        #modalProductDescription {
+            color: #555;
+            line-height: 1.6;
         }
 
         .modal-actions {
-            flex-direction: column;
+            display: flex;
+            gap: 8px;
+            margin-top: 18px;
         }
-    }
 
-</style>
-```
+        .modal-actions button {
+            flex: 1;
+        }
+
+        /* ==============================
+           NAVIGATION
+        ============================== */
+
+        .bottom-nav {
+            position: fixed;
+            z-index: 1500;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 72px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: white;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -4px 15px #0002;
+        }
+
+        .bottom-nav button {
+            border: none;
+            background: none;
+            color: #555;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .bottom-nav button.active {
+            color: var(--rose-fonce);
+        }
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+            padding: 25px 15px;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media (min-width: 700px) {
+
+            .products-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .product-photo {
+                height: 145px;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+
+    </style>
 
 </head>
 
+
+<!-- 010 -->
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
 
-<header class="top-header">
+    <!-- ==============================
+         HEADER
+    ============================== -->
 
-```
-<img
-    src="assets/logo.png"
-    alt="Logo Ikagne"
-    class="logo"
->
+    <header class="top-header">
 
-<div class="brand">
-    <h1>Ikagne</h1>
-    <p>Commerce • Vidéos • Réseau social</p>
-</div>
-```
-
-</header>
-
-<main>
-
-<!-- =========================
-     RECHERCHE
-========================= -->
-
-<section class="search-box">
-
-```
-<input
-    type="search"
-    id="searchInput"
-    placeholder="Rechercher une œuvre ou un produit..."
->
-
-<button
-    type="button"
-    onclick="rechercherProduits()"
->
-    Rechercher
-</button>
-```
-
-</section>
-
-<!-- =========================
-     PRESENTATION
-========================= -->
-
-<section class="hero">
-
-```
-<h2>
-    Vendez, présentez et communiquez avec Ikagne.
-</h2>
-
-<p>
-    Créez votre vitrine, ajoutez vos produits avec leurs
-    vraies photos, présentez vos œuvres et échangez
-    directement avec vos clients.
-</p>
-```
-
-</section>
-
-<!-- =========================
-     CATEGORIES
-========================= -->
-
-<section class="categories">
-
-```
-<button class="category">
-    Tout
-</button>
-
-<button class="category">
-    Mode
-</button>
-
-<button class="category">
-    Art
-</button>
-
-<button class="category">
-    Maison
-</button>
-
-<button class="category">
-    Technologie
-</button>
-
-<button class="category">
-    Alimentation
-</button>
-```
-
-</section>
-
-<!-- =========================
-     PRODUITS
-========================= -->
-
-<div class="section-title">
-
-```
-<h2>
-    Produits et œuvres
-</h2>
-
-<span id="productCount">
-    0
-</span>
-```
-
-</div>
-
-<section
-    id="productsGrid"
-    class="products-grid"
->
-
-```
-<div
-    id="emptyProducts"
-    class="empty-products"
->
-
-    <h3>
-        Aucune fiche publiée
-    </h3>
-
-    <p>
-        Crée ta première fiche ci-dessous
-        avec une vraie photo de ton produit
-        ou de ton œuvre.
-    </p>
-
-</div>
-```
-
-</section>
-
-<!-- =========================
-     CREER UNE FICHE
-========================= -->
-
-<div class="section-title">
-
-```
-<h2>
-    Créer ma fiche
-</h2>
-```
-
-</div>
-
-<section class="create-box">
-
-```
-<h3>
-    Publier un produit ou une œuvre
-</h3>
-
-<br>
-
-<input
-    type="text"
-    id="productName"
-    placeholder="Nom du produit ou de l'œuvre"
->
-
-<input
-    type="number"
-    id="productPrice"
-    placeholder="Prix en FCFA"
-    min="0"
->
-
-<textarea
-    id="productDescription"
-    placeholder="Description du produit ou de l'œuvre"
-></textarea>
-
-<input
-    type="file"
-    id="productImage"
-    accept="image/*"
-    onchange="previewImage(event)"
->
-
-<img
-    id="imagePreview"
-    class="image-preview"
-    alt="Aperçu"
->
-
-<button
-    type="button"
-    class="primary-button"
-    onclick="ajouterProduit()"
->
-    Publier la fiche
-</button>
-```
-
-</section>
-
-<!-- =========================
-     FONCTIONNALITES
-========================= -->
-
-<div class="section-title">
-
-```
-<h2>
-    Ikagne
-</h2>
-```
-
-</div>
-
-<section class="products-grid">
-
-```
-<div class="create-box">
-
-    <h3>
-        Boutique
-    </h3>
-
-    <p>
-        Présentez vos produits et œuvres
-        avec leurs propres photos.
-    </p>
-
-</div>
-
-
-<div class="create-box">
-
-    <h3>
-        Vidéos
-    </h3>
-
-    <p>
-        Préparez votre espace pour publier
-        vos vidéos marketing.
-    </p>
-
-</div>
-
-
-<div class="create-box">
-
-    <h3>
-        Messages
-    </h3>
-
-    <p>
-        Votre espace de communication
-        avec les clients.
-    </p>
-
-</div>
-
-
-<div class="create-box">
-
-    <h3>
-        Paiements
-    </h3>
-
-    <p>
-        Préparation de l'intégration
-        Mobile Money.
-    </p>
-
-</div>
-```
-
-</section>
-
-<!-- =========================
-     COMPTE FIREBASE
-========================= -->
-
-<section class="auth-box">
-
-```
-<h2>
-    Mon compte Ikagne
-</h2>
-
-<input
-    type="email"
-    id="email"
-    placeholder="Votre e-mail"
-    autocomplete="email"
->
-
-<input
-    type="password"
-    id="password"
-    placeholder="Mot de passe"
-    autocomplete="current-password"
->
-
-<div class="auth-buttons">
-
-    <button
-        type="button"
-        class="primary-button"
-        onclick="creerCompte()"
-    >
-        Créer un compte
-    </button>
-
-    <button
-        type="button"
-        class="secondary-button"
-        onclick="connecterCompte()"
-    >
-        Se connecter
-    </button>
-
-    <button
-        type="button"
-        class="danger-button"
-        id="logoutBtn"
-    >
-        Se déconnecter
-    </button>
-
-</div>
-
-<p id="userStatus">
-    Aucun utilisateur connecté
-</p>
-```
-
-</section>
-
-</main>
-
-<!-- =========================
-     FENETRE DETAIL PRODUIT
-========================= -->
-
-<div
-    id="productModal"
-    class="modal"
-    onclick="fermerModalExterieur(event)"
->
-
-```
-<div class="modal-content">
-
-    <button
-        type="button"
-        class="close-modal"
-        onclick="fermerProduit()"
-    >
-        ×
-    </button>
-
-    <img
-        id="modalProductImage"
-        src=""
-        alt="Produit"
-    >
-
-    <h2 id="modalProductTitle"></h2>
-
-    <div id="modalProductPrice"></div>
-
-    <p id="modalProductDescription"></p>
-
-    <div class="modal-actions">
-
-        <button
-            type="button"
-            class="primary-button"
-            onclick="contacterVendeur()"
+        <img
+            src="assets/logo.png"
+            alt="Logo Ikagne"
+            class="logo"
         >
-            Contacter le vendeur
-        </button>
 
-        <button
-            type="button"
-            class="secondary-button"
-            onclick="acheterProduit()"
-        >
-            Acheter
-        </button>
+        <div class="brand">
+
+            <h1>Ikagne</h1>
+
+            <p>
+                Commerce • Vidéos • Réseau social
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         PAGE ACCUEIL
+    ============================== -->
+
+    <section
+        id="pageAccueil"
+        class="page active"
+    >
+
+        <main>
+
+            <div class="search-box">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Rechercher une œuvre ou un produit..."
+                >
+
+                <button
+                    type="button"
+                    onclick="rechercherProduits()"
+                >
+                    🔍
+                </button>
+
+            </div>
+
+
+            <section class="hero">
+
+                <h2>
+                    Vendez, présentez et communiquez avec Ikagne.
+                </h2>
+
+                <p>
+                    Créez votre vitrine, ajoutez vos produits,
+                    présentez vos œuvres et échangez directement
+                    avec vos clients.
+                </p>
+
+            </section>
+
+
+            <div class="section-title">
+
+                <h2>
+                    Catégories
+                </h2>
+
+            </div>
+
+
+            <div class="categories">
+
+                <button
+                    class="category active"
+                    onclick="filtrerCategorie('Tout', this)"
+                >
+                    Tout
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filtrerCategorie('Mode', this)"
+                >
+                    Mode
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filtrerCategorie('Art', this)"
+                >
+                    Art
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filtrerCategorie('Maison', this)"
+                >
+                    Maison
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filtrerCategorie('Technologie', this)"
+                >
+                    Technologie
+                </button>
+
+                <button
+                    class="category"
+                    onclick="filtrerCategorie('Alimentation', this)"
+                >
+                    Alimentation
+                </button>
+
+            </div>
+
+
+            <div class="section-title">
+
+                <h2>
+                    Produits et œuvres
+                </h2>
+
+                <span id="productCount">
+                    0
+                </span>
+
+            </div>
+
+
+            <div
+                id="productsGrid"
+                class="products-grid"
+            >
+
+                <div
+                    id="emptyProducts"
+                    class="empty-products"
+                >
+
+                    <h3>
+                        Aucune fiche publiée
+                    </h3>
+
+                    <p>
+                        Les produits publiés apparaîtront ici.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ==============================
+         PAGE VIDEOS
+    ============================== -->
+
+    <section
+        id="pageVideos"
+        class="page"
+    >
+
+        <main>
+
+            <div class="section-title">
+
+                <h2>
+                    🎬 Vidéos Ikagne
+                </h2>
+
+            </div>
+
+
+            <div class="create-box">
+
+                <h3>
+                    Publier une vidéo
+                </h3>
+
+                <input
+                    type="text"
+                    id="videoTitle"
+                    placeholder="Titre de la vidéo"
+                >
+
+                <textarea
+                    id="videoDescription"
+                    placeholder="Description de la vidéo"
+                ></textarea>
+
+                <input
+                    type="url"
+                    id="videoUrl"
+                    placeholder="URL de la vidéo"
+                >
+
+                <input
+                    type="url"
+                    id="thumbnailUrl"
+                    placeholder="URL de la miniature"
+                >
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    onclick="publierVideo()"
+                >
+                    Publier la vidéo
+                </button>
+
+            </div>
+
+
+            <div id="videosList"></div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ==============================
+         PAGE BOUTIQUE
+    ============================== -->
+
+    <section
+        id="pageBoutique"
+        class="page"
+    >
+
+        <main>
+
+            <div class="section-title">
+
+                <h2>
+                    🛒 Ma boutique
+                </h2>
+
+            </div>
+
+
+            <div class="create-box">
+
+                <h3>
+                    Publier un produit ou une œuvre
+                </h3>
+
+                <input
+                    type="text"
+                    id="productName"
+                    placeholder="Nom du produit ou de l'œuvre"
+                >
+
+                <input
+                    type="number"
+                    id="productPrice"
+                    placeholder="Prix en FCFA"
+                    min="0"
+                >
+
+                <select id="productCategory">
+
+                    <option value="Mode">
+                        Mode
+                    </option>
+
+                    <option value="Art">
+                        Art
+                    </option>
+
+                    <option value="Maison">
+                        Maison
+                    </option>
+
+                    <option value="Technologie">
+                        Technologie
+                    </option>
+
+                    <option value="Alimentation">
+                        Alimentation
+                    </option>
+
+                    <option value="Autre">
+                        Autre
+                    </option>
+
+                </select>
+
+                <textarea
+                    id="productDescription"
+                    placeholder="Description du produit ou de l'œuvre"
+                ></textarea>
+
+                <input
+                    type="url"
+                    id="productImageUrl"
+                    placeholder="URL de la photo du produit"
+                >
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    onclick="ajouterProduit()"
+                >
+                    Publier la fiche
+                </button>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ==============================
+         PAGE MESSAGES
+    ============================== -->
+
+    <section
+        id="pageMessages"
+        class="page"
+    >
+
+        <main>
+
+            <div class="section-title">
+
+                <h2>
+                    💬 Messages
+                </h2>
+
+            </div>
+
+
+            <div class="message-box">
+
+                <input
+                    type="text"
+                    id="receiverId"
+                    placeholder="UID du destinataire"
+                >
+
+                <textarea
+                    id="messageText"
+                    placeholder="Écrire un message..."
+                ></textarea>
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    onclick="envoyerMessage()"
+                >
+                    Envoyer
+                </button>
+
+            </div>
+
+
+            <br>
+
+            <div id="messagesList"></div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ==============================
+         PAGE COMPTE
+    ============================== -->
+
+    <section
+        id="pageCompte"
+        class="page"
+    >
+
+        <main>
+
+            <div class="section-title">
+
+                <h2>
+                    👤 Mon compte Ikagne
+                </h2>
+
+            </div>
+
+
+            <div class="auth-box">
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Votre e-mail"
+                    autocomplete="email"
+                >
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Mot de passe"
+                    autocomplete="current-password"
+                >
+
+                <div class="auth-buttons">
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        onclick="creerCompte()"
+                    >
+                        Créer un compte
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        onclick="connecterCompte()"
+                    >
+                        Se connecter
+                    </button>
+
+                    <button
+                        type="button"
+                        class="danger-button"
+                        id="logoutBtn"
+                    >
+                        Se déconnecter
+                    </button>
+
+                </div>
+
+                <p id="userStatus">
+                    Aucun utilisateur connecté
+                </p>
+
+            </div>
+
+
+            <br>
+
+
+            <div class="account-card">
+
+                <h3>
+                    Mon profil
+                </h3>
+
+                <div
+                    id="accountEmail"
+                    class="account-email"
+                >
+                    Non connecté
+                </div>
+
+                <p>
+                    Votre compte Ikagne permet de publier
+                    des produits, des vidéos et d'échanger
+                    avec les autres utilisateurs.
+                </p>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- ==============================
+         MODAL PRODUIT
+    ============================== -->
+
+    <div
+        id="productModal"
+        class="modal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                type="button"
+                class="close-modal"
+                onclick="fermerProduit()"
+            >
+                ×
+            </button>
+
+            <img
+                id="modalProductImage"
+                src=""
+                alt="Produit"
+            >
+
+            <h2 id="modalProductTitle"></h2>
+
+            <div id="modalProductPrice"></div>
+
+            <p id="modalProductDescription"></p>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    onclick="contacterVendeur()"
+                >
+                    💬 Contacter
+                </button>
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    onclick="acheterProduit()"
+                >
+                    🛒 Acheter
+                </button>
+
+            </div>
+
+        </div>
 
     </div>
 
-</div>
-```
 
-</div>
+    <!-- ==============================
+         NAVIGATION
+    ============================== -->
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+    <nav class="bottom-nav">
 
-<nav class="bottom-nav">
+        <button
+            id="navAccueil"
+            class="active"
+            onclick="allerAccueil()"
+        >
+            🏠<br>
+            Accueil
+        </button>
 
-```
-<button
-    class="active"
-    onclick="allerAccueil()"
->
-    Accueil
-</button>
+        <button
+            id="navVideos"
+            onclick="allerVideos()"
+        >
+            🎬<br>
+            Vidéos
+        </button>
 
-<button
-    onclick="allerVideos()"
->
-    Vidéos
-</button>
+        <button
+            id="navBoutique"
+            onclick="allerBoutique()"
+        >
+            🛒<br>
+            Boutique
+        </button>
 
-<button
-    onclick="allerBoutique()"
->
-    Boutique
-</button>
+        <button
+            id="navMessages"
+            onclick="allerMessages()"
+        >
+            💬<br>
+            Messages
+        </button>
 
-<button
-    onclick="allerMessages()"
->
-    Messages
-</button>
-```
+        <button
+            id="navCompte"
+            onclick="allerCompte()"
+        >
+            👤<br>
+            Compte
+        </button>
 
-</nav>
-
-<footer>
-
-```
-© 2026 Ikagne — Commerce & Réseau Social
-```
-
-</footer>
-
-<!-- =========================
-     FIREBASE
-========================= -->
-
-<script type="module">
-
-    import {
-        initializeApp
-    } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+    </nav>
 
 
-    import {
-        getAuth,
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        onAuthStateChanged,
-        signOut
-    } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+    <!-- ==============================
+         FOOTER
+    ============================== -->
+
+    <footer>
+
+        © 2026 Ikagne — Commerce & Réseau Social
+
+    </footer>
 
 
-    const firebaseConfig = {
+    <!-- ==============================
+         FIREBASE
+    ============================== -->
 
-        apiKey:
-        "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
+    <script type="module">
 
-        authDomain:
-        "ikagne.firebaseapp.com",
+        /* Firebase */
 
-        projectId:
-        "ikagne",
-
-        storageBucket:
-        "ikagne.firebasestorage.app",
-
-        messagingSenderId:
-        "1081226903315",
-
-        appId:
-        "1:1081226903315:web:af9aec535fe1b0968a64e6",
-
-        measurementId:
-        "G-Y855TJMF00"
-    };
+        import {
+            initializeApp
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
-    const app =
-        initializeApp(firebaseConfig);
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-    const auth =
-        getAuth(app);
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            getDocs,
+            query,
+            orderBy,
+            serverTimestamp
+        } from
+        "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-    /* =========================
-       CREATION COMPTE
-    ========================= */
+        /* Configuration Firebase Ikagne */
 
-    window.creerCompte =
-    async function () {
+        const firebaseConfig = {
 
-        const email =
-            document
-            .getElementById("email")
-            .value
-            .trim();
+            apiKey:
+                "AIzaSyBg2Ym2olTbVWneKksVNtlkk_L4P5PIPg",
 
+            authDomain:
+                "ikagne.firebaseapp.com",
 
-        const password =
-            document
-            .getElementById("password")
-            .value;
+            projectId:
+                "ikagne",
 
+            storageBucket:
+                "ikagne.firebasestorage.app",
 
-        if (!email || !password) {
+            messagingSenderId:
+                "1081226903315",
 
-            alert(
-                "Veuillez remplir votre e-mail et votre mot de passe."
-            );
+            appId:
+                "1:1081226903315:web:af9aec535fe1b0968a64e6",
 
-            return;
-        }
+            measurementId:
+                "G-Y855TJMF00"
+        };
 
 
-        if (password.length < 6) {
+        /* Initialisation */
 
-            alert(
-                "Le mot de passe doit contenir au moins 6 caractères."
-            );
-
-            return;
-        }
+        const app =
+            initializeApp(firebaseConfig);
 
 
-        try {
+        const auth =
+            getAuth(app);
 
-            const resultat =
-                await createUserWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
+
+        const db =
+            getFirestore(app);
+
+
+        /* ==============================
+           UTILISATEUR CONNECTÉ
+        ============================== */
+
+        let utilisateurActuel = null;
+
+
+        /* ==============================
+           CREER COMPTE
+        ============================== */
+
+        async function creerCompte() {
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            if (!email || !password) {
+
+                alert(
+                    "Veuillez remplir votre e-mail et votre mot de passe."
+                );
+
+                return;
+            }
+
+
+            if (password.length < 6) {
+
+                alert(
+                    "Le mot de passe doit contenir au moins 6 caractères."
+                );
+
+                return;
+            }
+
+
+            try {
+
+                const resultat =
+                    await createUserWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                await addDoc(
+                    collection(db, "users"),
+                    {
+                        uid: resultat.user.uid,
+                        email: resultat.user.email,
+                        createdAt: serverTimestamp()
+                    }
                 );
 
 
-            alert(
-                "Compte Ikagne créé avec succès !"
-            );
+                alert(
+                    "Compte Ikagne créé avec succès !"
+                );
 
 
-            console.log(
-                "UID :",
-                resultat.user.uid
-            );
+            } catch (erreur) {
 
-        }
+                console.error(erreur);
 
-        catch (erreur) {
-
-            console.error(erreur);
-
-            alert(
-                "Erreur : " +
-                erreur.message
-            );
-        }
-
-    };
-
-
-    /* =========================
-       CONNEXION
-    ========================= */
-
-    window.connecterCompte =
-    async function () {
-
-        const email =
-            document
-            .getElementById("email")
-            .value
-            .trim();
-
-
-        const password =
-            document
-            .getElementById("password")
-            .value;
-
-
-        if (!email || !password) {
-
-            alert(
-                "Veuillez remplir votre e-mail et votre mot de passe."
-            );
-
-            return;
+                alert(
+                    "Erreur : " + erreur.message
+                );
+            }
         }
 
 
-        try {
+        /* ==============================
+           CONNEXION
+        ============================== */
 
-            const resultat =
+        async function connecterCompte() {
+
+            const email =
+                document
+                .getElementById("email")
+                .value
+                .trim();
+
+
+            const password =
+                document
+                .getElementById("password")
+                .value;
+
+
+            if (!email || !password) {
+
+                alert(
+                    "Veuillez remplir votre e-mail et votre mot de passe."
+                );
+
+                return;
+            }
+
+
+            try {
+
                 await signInWithEmailAndPassword(
                     auth,
                     email,
@@ -1163,725 +1415,1159 @@
                 );
 
 
-            alert(
-                "Connexion réussie !"
-            );
-
-
-            console.log(
-                "Utilisateur :",
-                resultat.user.email
-            );
-
-        }
-
-        catch (erreur) {
-
-            console.error(erreur);
-
-            alert(
-                "Erreur de connexion : " +
-                erreur.message
-            );
-        }
-
-    };
-
-
-    /* =========================
-       DECONNEXION
-    ========================= */
-
-    document
-    .getElementById("logoutBtn")
-    .addEventListener(
-        "click",
-        async function () {
-
-            try {
-
-                await signOut(auth);
-
                 alert(
-                    "Vous êtes déconnecté."
+                    "Connexion réussie !"
                 );
 
-            }
 
-            catch (erreur) {
+            } catch (erreur) {
 
                 console.error(erreur);
 
                 alert(
-                    "Erreur lors de la déconnexion."
+                    "Erreur de connexion : " +
+                    erreur.message
                 );
             }
-
         }
-    );
 
 
-    /* =========================
-       ETAT UTILISATEUR
-    ========================= */
+        /* ==============================
+           DECONNEXION
+        ============================== */
 
-    onAuthStateChanged(
-        auth,
-        function (user) {
+        document
+        .getElementById("logoutBtn")
+        .addEventListener(
+            "click",
+            async () => {
 
-            const status =
+                try {
+
+                    await signOut(auth);
+
+                    alert(
+                        "Vous êtes déconnecté."
+                    );
+
+                } catch (erreur) {
+
+                    console.error(erreur);
+
+                    alert(
+                        "Erreur lors de la déconnexion."
+                    );
+                }
+
+            }
+        );
+
+
+        /* ==============================
+           ETAT AUTHENTIFICATION
+        ============================== */
+
+        onAuthStateChanged(
+            auth,
+            (user) => {
+
+                utilisateurActuel = user;
+
+
+                const status =
+                    document
+                    .getElementById("userStatus");
+
+
+                const accountEmail =
+                    document
+                    .getElementById("accountEmail");
+
+
+                if (user) {
+
+                    status.textContent =
+                        "Connecté : " +
+                        user.email;
+
+
+                    accountEmail.textContent =
+                        user.email;
+
+                } else {
+
+                    status.textContent =
+                        "Aucun utilisateur connecté";
+
+
+                    accountEmail.textContent =
+                        "Non connecté";
+                }
+
+            }
+        );
+
+
+        /* ==============================
+           AJOUTER PRODUIT
+        ============================== */
+
+        window.ajouterProduit =
+        async function () {
+
+            if (!utilisateurActuel) {
+
+                alert(
+                    "Connectez-vous avant de publier un produit."
+                );
+
+                return;
+            }
+
+
+            const name =
                 document
-                .getElementById("userStatus");
+                .getElementById("productName")
+                .value
+                .trim();
 
 
-            if (user) {
+            const price =
+                Number(
+                    document
+                    .getElementById("productPrice")
+                    .value
+                );
 
-                status.textContent =
-                    "Connecté : " +
-                    user.email;
 
+            const category =
+                document
+                .getElementById("productCategory")
+                .value;
+
+
+            const description =
+                document
+                .getElementById("productDescription")
+                .value
+                .trim();
+
+
+            const imageUrl =
+                document
+                .getElementById("productImageUrl")
+                .value
+                .trim();
+
+
+            if (!name) {
+
+                alert(
+                    "Entrez le nom du produit."
+                );
+
+                return;
             }
 
-            else {
-
-                status.textContent =
-                    "Aucun utilisateur connecté";
-
-            }
-
-        }
-    );
-
-</script>
-
-<!-- =========================
-     LOGIQUE IKAGNE
-========================= -->
-
-<script>
-
-    let produits = [];
-
-    let produitSelectionne = null;
-
-
-    /* =========================
-       CHARGER LES PRODUITS
-    ========================= */
-
-    function chargerProduits() {
-
-        const sauvegarde =
-            localStorage.getItem(
-                "ikagne_produits"
-            );
-
-
-        if (sauvegarde) {
 
             try {
 
-                produits =
-                    JSON.parse(sauvegarde);
+                await addDoc(
+                    collection(db, "products"),
+                    {
 
-            }
+                        name: name,
 
-            catch {
+                        price: price,
 
-                produits = [];
+                        category: category,
 
-            }
+                        description: description,
 
-        }
+                        imageUrl: imageUrl,
 
+                        sellerId:
+                            utilisateurActuel.uid,
 
-        afficherProduits();
-
-    }
-
-
-    /* =========================
-       APERCU IMAGE
-    ========================= */
-
-    function previewImage(event) {
-
-        const fichier =
-            event.target.files[0];
-
-
-        const preview =
-            document.getElementById(
-                "imagePreview"
-            );
-
-
-        if (!fichier) {
-
-            preview.style.display =
-                "none";
-
-            return;
-        }
-
-
-        const lecteur =
-            new FileReader();
-
-
-        lecteur.onload =
-        function () {
-
-            preview.src =
-                lecteur.result;
-
-            preview.style.display =
-                "block";
-
-        };
-
-
-        lecteur.readAsDataURL(fichier);
-
-    }
-
-
-    /* =========================
-       AJOUT PRODUIT
-    ========================= */
-
-    function ajouterProduit() {
-
-        const nom =
-            document
-            .getElementById("productName")
-            .value
-            .trim();
-
-
-        const prix =
-            document
-            .getElementById("productPrice")
-            .value
-            .trim();
-
-
-        const description =
-            document
-            .getElementById("productDescription")
-            .value
-            .trim();
-
-
-        const fichier =
-            document
-            .getElementById("productImage")
-            .files[0];
-
-
-        if (!nom) {
-
-            alert(
-                "Entrez le nom du produit ou de l'œuvre."
-            );
-
-            return;
-        }
-
-
-        if (!prix) {
-
-            alert(
-                "Entrez le prix."
-            );
-
-            return;
-        }
-
-
-        if (!description) {
-
-            alert(
-                "Entrez une description."
-            );
-
-            return;
-        }
-
-
-        if (!fichier) {
-
-            alert(
-                "Ajoutez une vraie photo."
-            );
-
-            return;
-        }
-
-
-        const lecteur =
-            new FileReader();
-
-
-        lecteur.onload =
-        function () {
-
-            const nouveauProduit = {
-
-                id:
-                Date.now(),
-
-                nom:
-                nom,
-
-                prix:
-                Number(prix),
-
-                description:
-                description,
-
-                image:
-                lecteur.result
-
-            };
-
-
-            produits.push(
-                nouveauProduit
-            );
-
-
-            localStorage.setItem(
-                "ikagne_produits",
-                JSON.stringify(produits)
-            );
-
-
-            document
-            .getElementById("productName")
-            .value = "";
-
-
-            document
-            .getElementById("productPrice")
-            .value = "";
-
-
-            document
-            .getElementById("productDescription")
-            .value = "";
-
-
-            document
-            .getElementById("productImage")
-            .value = "";
-
-
-            document
-            .getElementById("imagePreview")
-            .style.display =
-                "none";
-
-
-            afficherProduits();
-
-
-            alert(
-                "Votre fiche a été créée."
-            );
-
-        };
-
-
-        lecteur.readAsDataURL(fichier);
-
-    }
-
-
-    /* =========================
-       AFFICHER PRODUITS
-    ========================= */
-
-    function afficherProduits(
-        liste = produits
-    ) {
-
-        const grille =
-            document
-            .getElementById("productsGrid");
-
-
-        const compteur =
-            document
-            .getElementById("productCount");
-
-
-        grille.innerHTML = "";
-
-
-        compteur.textContent =
-            liste.length;
-
-
-        if (liste.length === 0) {
-
-            grille.innerHTML = `
-
-                <div class="empty-products">
-
-                    <h3>
-                        Aucune fiche publiée
-                    </h3>
-
-                    <p>
-                        Crée ta première fiche
-                        avec une vraie photo.
-                    </p>
-
-                </div>
-
-            `;
-
-            return;
-        }
-
-
-        liste.forEach(
-            function (produit) {
-
-                const carte =
-                    document.createElement(
-                        "article"
-                    );
-
-
-                carte.className =
-                    "product-card";
-
-
-                carte.innerHTML = `
-
-                    <img
-                        class="product-photo"
-                        src="${produit.image}"
-                        alt="${echapper(produit.nom)}"
-                    >
-
-                    <div class="product-info">
-
-                        <h3>
-                            ${echapper(produit.nom)}
-                        </h3>
-
-                        <div class="product-price">
-                            ${formaterPrix(produit.prix)}
-                        </div>
-
-                        <p class="product-description">
-                            ${echapper(produit.description)}
-                        </p>
-
-                        <div class="product-actions">
-
-                            <button
-                                class="view-product"
-                                onclick="ouvrirProduit(${produit.id})"
-                            >
-                                Voir
-                            </button>
-
-                        </div>
-
-                    </div>
-                `;
-
-
-                grille.appendChild(
-                    carte
+                        createdAt:
+                            serverTimestamp()
+                    }
                 );
 
+
+                alert(
+                    "Produit publié avec succès !"
+                );
+
+
+                document
+                .getElementById("productName")
+                .value = "";
+
+
+                document
+                .getElementById("productPrice")
+                .value = "";
+
+
+                document
+                .getElementById("productDescription")
+                .value = "";
+
+
+                document
+                .getElementById("productImageUrl")
+                .value = "";
+
+
+                chargerProduits();
+
+            } catch (erreur) {
+
+                console.error(erreur);
+
+                alert(
+                    "Erreur lors de la publication : " +
+                    erreur.message
+                );
             }
-        );
-
-    }
+        };
 
 
-    /* =========================
-       OUVRIR PRODUIT
-    ========================= */
+        /* ==============================
+           CHARGER PRODUITS
+        ============================== */
 
-    function ouvrirProduit(id) {
+        async function chargerProduits() {
 
-        const produit =
-            produits.find(
-                function (element) {
+            try {
 
-                    return element.id === id;
-
-                }
-            );
+                const produitsRef =
+                    collection(db, "products");
 
 
-        if (!produit) {
-            return;
-        }
-
-
-        produitSelectionne =
-            produit;
-
-
-        document
-        .getElementById(
-            "modalProductImage"
-        )
-        .src =
-            produit.image;
-
-
-        document
-        .getElementById(
-            "modalProductTitle"
-        )
-        .textContent =
-            produit.nom;
-
-
-        document
-        .getElementById(
-            "modalProductPrice"
-        )
-        .textContent =
-            formaterPrix(
-                produit.prix
-            );
-
-
-        document
-        .getElementById(
-            "modalProductDescription"
-        )
-        .textContent =
-            produit.description;
-
-
-        document
-        .getElementById(
-            "productModal"
-        )
-        .classList.add(
-            "active"
-        );
-
-    }
-
-
-    /* =========================
-       FERMER PRODUIT
-    ========================= */
-
-    function fermerProduit() {
-
-        document
-        .getElementById(
-            "productModal"
-        )
-        .classList.remove(
-            "active"
-        );
-
-    }
-
-
-    function fermerModalExterieur(
-        event
-    ) {
-
-        if (
-            event.target.id ===
-            "productModal"
-        ) {
-
-            fermerProduit();
-
-        }
-
-    }
-
-
-    /* =========================
-       CONTACT
-    ========================= */
-
-    function contacterVendeur() {
-
-        if (!produitSelectionne) {
-            return;
-        }
-
-
-        alert(
-            "La messagerie Ikagne va ouvrir la conversation avec le vendeur de : " +
-            produitSelectionne.nom
-        );
-
-    }
-
-
-    /* =========================
-       ACHAT
-    ========================= */
-
-    function acheterProduit() {
-
-        if (!produitSelectionne) {
-            return;
-        }
-
-
-        alert(
-            "Commande sélectionnée : " +
-            produitSelectionne.nom +
-            " — " +
-            formaterPrix(
-                produitSelectionne.prix
-            )
-        );
-
-    }
-
-
-    /* =========================
-       RECHERCHE
-    ========================= */
-
-    function rechercherProduits() {
-
-        const recherche =
-            document
-            .getElementById(
-                "searchInput"
-            )
-            .value
-            .trim()
-            .toLowerCase();
-
-
-        if (!recherche) {
-
-            afficherProduits();
-
-            return;
-        }
-
-
-        const resultat =
-            produits.filter(
-                function (produit) {
-
-                    return (
-                        produit.nom
-                        .toLowerCase()
-                        .includes(recherche)
-                        ||
-                        produit.description
-                        .toLowerCase()
-                        .includes(recherche)
+                const requete =
+                    query(
+                        produitsRef,
+                        orderBy(
+                            "createdAt",
+                            "desc"
+                        )
                     );
 
+
+                const resultat =
+                    await getDocs(requete);
+
+
+                const grid =
+                    document
+                    .getElementById("productsGrid");
+
+
+                const count =
+                    document
+                    .getElementById("productCount");
+
+
+                grid.innerHTML = "";
+
+
+                count.textContent =
+                    resultat.size;
+
+
+                if (resultat.empty) {
+
+                    grid.innerHTML = `
+                        <div class="empty-products">
+                            <h3>Aucune fiche publiée</h3>
+                            <p>
+                                Les produits publiés apparaîtront ici.
+                            </p>
+                        </div>
+                    `;
+
+                    return;
+                }
+
+
+                resultat.forEach(
+                    (documentProduit) => {
+
+                        const produit =
+                            documentProduit.data();
+
+
+                        const image =
+                            produit.imageUrl ||
+                            "assets/logo.png";
+
+
+                        const card =
+                            document.createElement("div");
+
+
+                        card.className =
+                            "product-card";
+
+
+                        card.innerHTML = `
+
+                            <img
+                                class="product-photo"
+                                src="${image}"
+                                alt="${produit.name || "Produit"}"
+                            >
+
+                            <div class="product-info">
+
+                                <h3>
+                                    ${produit.name || "Produit"}
+                                </h3>
+
+                                <div class="product-price">
+                                    ${Number(produit.price || 0).toLocaleString("fr-FR")}
+                                    FCFA
+                                </div>
+
+                                <p class="product-description">
+                                    ${produit.description || ""}
+                                </p>
+
+                                <div class="product-actions">
+
+                                    <button
+                                        class="view-product"
+                                        onclick="ouvrirProduit(
+                                            '${documentProduit.id}'
+                                        )"
+                                    >
+                                        Voir
+                                    </button>
+
+                                </div>
+
+                            </div>
+                        `;
+
+
+                        grid.appendChild(card);
+
+                    }
+                );
+
+            } catch (erreur) {
+
+                console.error(
+                    "Erreur produits :",
+                    erreur
+                );
+
+                document
+                .getElementById("productsGrid")
+                .innerHTML = `
+                    <div class="empty-products">
+                        Impossible de charger les produits.
+                    </div>
+                `;
+            }
+        }
+
+
+        /* ==============================
+           RECHERCHE
+        ============================== */
+
+        window.rechercherProduits =
+        function () {
+
+            const recherche =
+                document
+                .getElementById("searchInput")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+            if (!recherche) {
+
+                chargerProduits();
+
+                return;
+            }
+
+
+            const cartes =
+                document
+                .querySelectorAll(
+                    ".product-card"
+                );
+
+
+            cartes.forEach(
+                (carte) => {
+
+                    const texte =
+                        carte.textContent
+                        .toLowerCase();
+
+
+                    carte.style.display =
+                        texte.includes(recherche)
+                        ? ""
+                        : "none";
+                }
+            );
+        };
+
+
+        /* ==============================
+           FILTRE CATEGORIE
+        ============================== */
+
+        window.filtrerCategorie =
+        function (categorie, bouton) {
+
+            document
+            .querySelectorAll(".category")
+            .forEach(
+                (element) => {
+                    element.classList.remove(
+                        "active"
+                    );
                 }
             );
 
 
-        afficherProduits(
-            resultat
-        );
-
-    }
+            bouton.classList.add(
+                "active"
+            );
 
 
-    /* =========================
-       FORMAT PRIX
-    ========================= */
-
-    function formaterPrix(prix) {
-
-        return Number(prix)
-            .toLocaleString("fr-FR")
-            + " FCFA";
-
-    }
+            const cartes =
+                document
+                .querySelectorAll(
+                    ".product-card"
+                );
 
 
-    /* =========================
-       SECURITE TEXTE
-    ========================= */
+            cartes.forEach(
+                (carte) => {
 
-    function echapper(texte) {
+                    if (
+                        categorie === "Tout"
+                    ) {
 
-        return String(texte)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
+                        carte.style.display =
+                            "";
 
-    }
+                        return;
+                    }
 
 
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    function allerAccueil() {
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
+                    const texte =
+                        carte.textContent
+                        .toLowerCase();
 
 
-    function allerVideos() {
-
-        alert(
-            "Espace Vidéos Ikagne."
-        );
-
-    }
-
-
-    function allerBoutique() {
-
-        document
-        .getElementById(
-            "productsGrid"
-        )
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-    }
+                    carte.style.display =
+                        texte.includes(
+                            categorie.toLowerCase()
+                        )
+                        ? ""
+                        : "none";
+                }
+            );
+        };
 
 
-    function allerMessages() {
+        /* ==============================
+           NAVIGATION
+        ============================== */
 
-        alert(
-            "Espace Messages Ikagne."
-        );
+        function afficherPage(pageId) {
 
-    }
+            document
+            .querySelectorAll(".page")
+            .forEach(
+                (page) => {
+
+                    page.classList.remove(
+                        "active"
+                    );
+                }
+            );
 
 
-    /* =========================
-       DEMARRAGE
-    ========================= */
+            document
+            .getElementById(pageId)
+            .classList.add(
+                "active"
+            );
 
-    chargerProduits();
 
-</script>
+            document
+            .querySelectorAll(".bottom-nav button")
+            .forEach(
+                (button) => {
+
+                    button.classList.remove(
+                        "active"
+                    );
+                }
+            );
+        }
+
+
+        window.allerAccueil =
+        function () {
+
+            afficherPage(
+                "pageAccueil"
+            );
+
+            document
+            .getElementById("navAccueil")
+            .classList.add("active");
+        };
+
+
+        window.allerVideos =
+        function () {
+
+            afficherPage(
+                "pageVideos"
+            );
+
+            document
+            .getElementById("navVideos")
+            .classList.add("active");
+
+            chargerVideos();
+        };
+
+
+        window.allerBoutique =
+        function () {
+
+            afficherPage(
+                "pageBoutique"
+            );
+
+            document
+            .getElementById("navBoutique")
+            .classList.add("active");
+        };
+
+
+        window.allerMessages =
+        function () {
+
+            afficherPage(
+                "pageMessages"
+            );
+
+            document
+            .getElementById("navMessages")
+            .classList.add("active");
+
+            chargerMessages();
+        };
+
+
+        window.allerCompte =
+        function () {
+
+            afficherPage(
+                "pageCompte"
+            );
+
+            document
+            .getElementById("navCompte")
+            .classList.add("active");
+        };
+
+
+        /* ==============================
+           VIDEOS
+        ============================== */
+
+        window.publierVideo =
+        async function () {
+
+            if (!utilisateurActuel) {
+
+                alert(
+                    "Connectez-vous avant de publier une vidéo."
+                );
+
+                return;
+            }
+
+
+            const title =
+                document
+                .getElementById("videoTitle")
+                .value
+                .trim();
+
+
+            const description =
+                document
+                .getElementById("videoDescription")
+                .value
+                .trim();
+
+
+            const videoUrl =
+                document
+                .getElementById("videoUrl")
+                .value
+                .trim();
+
+
+            const thumbnailUrl =
+                document
+                .getElementById("thumbnailUrl")
+                .value
+                .trim();
+
+
+            if (!title || !videoUrl) {
+
+                alert(
+                    "Le titre et l'URL de la vidéo sont obligatoires."
+                );
+
+                return;
+            }
+
+
+            try {
+
+                await addDoc(
+                    collection(db, "videos"),
+                    {
+
+                        title: title,
+
+                        description: description,
+
+                        videoUrl: videoUrl,
+
+                        thumbnailUrl:
+                            thumbnailUrl,
+
+                        userId:
+                            utilisateurActuel.uid,
+
+                        likes: 0,
+
+                        createdAt:
+                            serverTimestamp()
+                    }
+                );
+
+
+                alert(
+                    "Vidéo publiée !"
+                );
+
+
+                chargerVideos();
+
+            } catch (erreur) {
+
+                console.error(erreur);
+
+                alert(
+                    "Erreur vidéo : " +
+                    erreur.message
+                );
+            }
+        };
+
+
+        async function chargerVideos() {
+
+            const liste =
+                document
+                .getElementById("videosList");
+
+
+            liste.innerHTML = "";
+
+
+            try {
+
+                const resultat =
+                    await getDocs(
+                        collection(
+                            db,
+                            "videos"
+                        )
+                    );
+
+
+                resultat.forEach(
+                    (documentVideo) => {
+
+                        const video =
+                            documentVideo.data();
+
+
+                        const element =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        element.className =
+                            "video-card";
+
+
+                        element.innerHTML = `
+
+                            <h3>
+                                ${video.title || "Vidéo Ikagne"}
+                            </h3>
+
+                            <p>
+                                ${video.description || ""}
+                            </p>
+
+                            <br>
+
+                            <video
+                                controls
+                                poster="${video.thumbnailUrl || ""}"
+                            >
+                                <source
+                                    src="${video.videoUrl}"
+                                >
+                            </video>
+
+                        `;
+
+
+                        liste.appendChild(
+                            element
+                        );
+
+                    }
+                );
+
+            } catch (erreur) {
+
+                console.error(erreur);
+            }
+        }
+
+
+        /* ==============================
+           MESSAGES
+        ============================== */
+
+        window.envoyerMessage =
+        async function () {
+
+            if (!utilisateurActuel) {
+
+                alert(
+                    "Connectez-vous pour envoyer un message."
+                );
+
+                return;
+            }
+
+
+            const receiverId =
+                document
+                .getElementById("receiverId")
+                .value
+                .trim();
+
+
+            const text =
+                document
+                .getElementById("messageText")
+                .value
+                .trim();
+
+
+            if (!receiverId || !text) {
+
+                alert(
+                    "Destinataire et message obligatoires."
+                );
+
+                return;
+            }
+
+
+            try {
+
+                await addDoc(
+                    collection(
+                        db,
+                        "messages"
+                    ),
+                    {
+
+                        senderId:
+                            utilisateurActuel.uid,
+
+                        receiverId:
+                            receiverId,
+
+                        text:
+                            text,
+
+                        read:
+                            false,
+
+                        createdAt:
+                            serverTimestamp()
+                    }
+                );
+
+
+                document
+                .getElementById("messageText")
+                .value = "";
+
+
+                alert(
+                    "Message envoyé."
+                );
+
+
+                chargerMessages();
+
+            } catch (erreur) {
+
+                console.error(erreur);
+
+                alert(
+                    "Erreur message : " +
+                    erreur.message
+                );
+            }
+        };
+
+
+        async function chargerMessages() {
+
+            const liste =
+                document
+                .getElementById("messagesList");
+
+
+            liste.innerHTML = "";
+
+
+            if (!utilisateurActuel) {
+
+                liste.innerHTML =
+                    "<p>Connectez-vous pour voir vos messages.</p>";
+
+                return;
+            }
+
+
+            try {
+
+                const resultat =
+                    await getDocs(
+                        collection(
+                            db,
+                            "messages"
+                        )
+                    );
+
+
+                resultat.forEach(
+                    (documentMessage) => {
+
+                        const message =
+                            documentMessage.data();
+
+
+                        if (
+                            message.senderId !==
+                            utilisateurActuel.uid
+                            &&
+                            message.receiverId !==
+                            utilisateurActuel.uid
+                        ) {
+
+                            return;
+                        }
+
+
+                        const element =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        element.className =
+                            "message-item";
+
+
+                        element.innerHTML = `
+
+                            <strong>
+                                ${message.senderId === utilisateurActuel.uid
+                                    ? "Vous"
+                                    : "Message reçu"}
+                            </strong>
+
+                            <p>
+                                ${message.text || ""}
+                            </p>
+
+                        `;
+
+
+                        liste.appendChild(
+                            element
+                        );
+
+                    }
+                );
+
+            } catch (erreur) {
+
+                console.error(erreur);
+            }
+        }
+
+
+        /* ==============================
+           PRODUIT MODAL
+        ============================== */
+
+        let produitSelectionne = null;
+
+
+        window.ouvrirProduit =
+        async function (id) {
+
+            try {
+
+                const resultat =
+                    await getDocs(
+                        collection(
+                            db,
+                            "products"
+                        )
+                    );
+
+
+                resultat.forEach(
+                    (documentProduit) => {
+
+                        if (
+                            documentProduit.id === id
+                        ) {
+
+                            produitSelectionne =
+                                documentProduit.data();
+                        }
+
+                    }
+                );
+
+
+                if (!produitSelectionne) {
+
+                    alert(
+                        "Produit introuvable."
+                    );
+
+                    return;
+                }
+
+
+                document
+                .getElementById(
+                    "modalProductImage"
+                )
+                .src =
+                    produitSelectionne.imageUrl ||
+                    "assets/logo.png";
+
+
+                document
+                .getElementById(
+                    "modalProductTitle"
+                )
+                .textContent =
+                    produitSelectionne.name ||
+                    "Produit";
+
+
+                document
+                .getElementById(
+                    "modalProductPrice"
+                )
+                .textContent =
+                    Number(
+                        produitSelectionne.price || 0
+                    ).toLocaleString(
+                        "fr-FR"
+                    ) +
+                    " FCFA";
+
+
+                document
+                .getElementById(
+                    "modalProductDescription"
+                )
+                .textContent =
+                    produitSelectionne.description ||
+                    "";
+
+
+                document
+                .getElementById(
+                    "productModal"
+                )
+                .classList.add(
+                    "active"
+                );
+
+            } catch (erreur) {
+
+                console.error(erreur);
+            }
+        };
+
+
+        window.fermerProduit =
+        function () {
+
+            document
+            .getElementById(
+                "productModal"
+            )
+            .classList.remove(
+                "active"
+            );
+        };
+
+
+        window.contacterVendeur =
+        function () {
+
+            if (!utilisateurActuel) {
+
+                alert(
+                    "Connectez-vous pour contacter le vendeur."
+                );
+
+                return;
+            }
+
+
+            if (!produitSelectionne) {
+
+                return;
+            }
+
+
+            allerMessages();
+
+
+            document
+            .getElementById(
+                "receiverId"
+            )
+            .value =
+                produitSelectionne.sellerId ||
+                "";
+        };
+
+
+        window.acheterProduit =
+        async function () {
+
+            if (!utilisateurActuel) {
+
+                alert(
+                    "Connectez-vous pour acheter."
+                );
+
+                return;
+            }
+
+
+            if (!produitSelectionne) {
+
+                return;
+            }
+
+
+            try {
+
+                await addDoc(
+                    collection(
+                        db,
+                        "orders"
+                    ),
+                    {
+
+                        buyerId:
+                            utilisateurActuel.uid,
+
+                        sellerId:
+                            produitSelectionne.sellerId,
+
+                        productId:
+                            "produit",
+
+                        quantity: 1,
+
+                        total:
+                            Number(
+                                produitSelectionne.price || 0
+                            ),
+
+                        status:
+                            "pending",
+
+                        createdAt:
+                            serverTimestamp()
+                    }
+                );
+
+
+                alert(
+                    "Commande enregistrée dans Ikagne."
+                );
+
+
+            } catch (erreur) {
+
+                console.error(erreur);
+
+                alert(
+                    "Erreur commande : " +
+                    erreur.message
+                );
+            }
+        };
+
+
+        /* ==============================
+           CHARGEMENT INITIAL
+        ============================== */
+
+        chargerProduits();
+
+    </script>
 
 </body>
-
 </html>

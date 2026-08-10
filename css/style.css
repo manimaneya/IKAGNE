@@ -1,30 +1,21 @@
 /* =========================
-   BASE & RESET
+   RESET & BASE
 ========================= */
 
-*,
-*::before,
-*::after {
+* {
     box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #fff8fa;
-    color: #111111;
-    -webkit-font-smoothing: antialiased;
-    padding-bottom: 82px;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
 }
 
 button,
-input,
-textarea,
-select {
+input {
     font-family: inherit;
 }
 
@@ -32,1018 +23,504 @@ button {
     cursor: pointer;
 }
 
-img,
-video {
-    max-width: 100%;
-}
-
 /* =========================
-   APPLICATION
+   APPLICATION CONTAINER
 ========================= */
 
 .app {
-    max-width: 500px;
     width: 100%;
+    max-width: 520px;
     min-height: 100vh;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding-bottom: 82px;
+    margin: auto;
+    background: white;
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* =========================
    HEADER
 ========================= */
 
-.top-header {
-    min-height: 82px;
+.header {
+    height: 70px;
+    background: linear-gradient(
+        135deg,
+        #d99b00,
+        #f1c232
+    );
+
     display: flex;
     align-items: center;
-    gap: 13px;
-    padding: 12px 18px;
-    color: #ffffff;
-    background: linear-gradient(135deg, #d94f76, #d49a32);
-    box-shadow: 0 5px 18px #0003;
-}
+    justify-content: space-between;
 
-.top-header h1 {
-    margin: 0;
-    font-size: 30px;
-    line-height: 1;
-    text-shadow: 2px 3px 0 #0004;
-}
+    padding: 10px 16px;
 
-.top-header p {
-    margin: 5px 0 0;
-    color: #ffffff;
-    font-size: 11px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
-
-/* =========================
-   ANCIEN LOGO IMAGE
-========================= */
 
 .logo {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 9px;
 }
 
-/* =========================
-   LOGO IKAGNE 3D
-========================= */
+.logo-circle {
+    width: 48px;
+    height: 48px;
 
-.ikagne-logo {
-    position: relative;
-    width: 62px;
-    height: 62px;
+    border-radius: 15px;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #ffd45c
+    );
+
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    perspective: 800px;
-}
 
-.logo-i {
-    position: relative;
-    z-index: 2;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 58px;
+    font-size: 25px;
     font-weight: 900;
-    line-height: 1;
 
-    background-image: linear-gradient(
-        135deg,
-        #ffffff 0%,
-        #a7f3d0 28%,
-        #38bdf8 60%,
-        #c084fc 100%
-    );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-
-    filter:
-        drop-shadow(0 0 7px #06b6d4)
-        drop-shadow(0 0 15px #8b5cf6);
-
-    animation: ikagneIRotation 4s ease-in-out infinite alternate;
-}
-
-.logo-ring {
-    position: absolute;
-    z-index: 1;
-    width: 58px;
-    height: 58px;
-
-    border: 2px solid rgba(6, 182, 212, 0.7);
-    border-top-color: #ec4899;
-    border-right-color: #8b5cf6;
-    border-radius: 50%;
+    color: #b56d00;
 
     box-shadow:
-        0 0 10px rgba(6, 182, 212, 0.5),
-        inset 0 0 10px rgba(139, 92, 246, 0.3);
-
-    animation: ikagneRing 5s linear infinite;
+        0 5px 10px rgba(0,0,0,0.2),
+        inset 2px 2px 5px rgba(255,255,255,0.8);
 }
 
-@keyframes ikagneIRotation {
-    0% {
-        transform: rotateY(-28deg) rotateX(8deg) scale(0.94);
-    }
-
-    50% {
-        transform: rotateY(0deg) rotateX(0deg) scale(1.08);
-    }
-
-    100% {
-        transform: rotateY(28deg) rotateX(-8deg) scale(0.94);
-    }
+.logo-name {
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
 }
 
-@keyframes ikagneRing {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* =========================
-   PAGES
-========================= */
-
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-main {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 15px;
+.header-user {
+    font-size: 22px;
+    background: white;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
 }
 
 /* =========================
    ACCUEIL
 ========================= */
 
-.welcome {
-    padding: 40px 20px;
-    text-align: center;
+.home {
+    padding: 18px 15px 90px;
 }
 
-.welcome h2 {
-    font-size: 25px;
+.welcome {
+    background: linear-gradient(
+        135deg,
+        #ffe8ec,
+        #fff5d7
+    );
+
+    border-radius: 20px;
+    padding: 20px;
+
+    margin-bottom: 18px;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.welcome h1 {
+    font-size: 26px;
+    color: #b67800;
+    margin-bottom: 8px;
 }
 
 .welcome p {
-    color: #666666;
+    color: #555;
     line-height: 1.5;
-}
-
-.hero {
-    padding: 25px 20px;
-    margin-bottom: 20px;
-    border-radius: 22px;
-    background: linear-gradient(135deg, #ffffff, #f4cbd7);
-    border-left: 6px solid #d49a32;
-    box-shadow: 0 5px 18px #0002;
-}
-
-.hero h2 {
-    margin: 0 0 9px;
-    font-size: 25px;
-}
-
-.hero p {
-    margin: 0;
-    color: #555555;
-    line-height: 1.5;
-}
-
-/* =========================
-   RECHERCHE
-========================= */
-
-.search-box {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 18px;
-}
-
-.search-box input {
-    flex: 1;
-    min-width: 0;
-    padding: 14px;
-    border: 2px solid #f4cbd7;
-    border-radius: 14px;
-    background: #ffffff;
-    outline: none;
-    font-size: 15px;
-}
-
-.search-box input:focus {
-    border-color: #d49a32;
-}
-
-.search-box button {
-    border: none;
-    padding: 0 18px;
-    border-radius: 14px;
-    color: #ffffff;
-    background: #d49a32;
-    font-weight: bold;
 }
 
 /* =========================
    BOUTONS
 ========================= */
 
-button {
+.main-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.main-button {
     border: none;
-    border-radius: 12px;
-    transition:
-        transform 0.2s ease,
-        opacity 0.2s ease,
-        background-color 0.3s ease;
+    border-radius: 15px;
+    padding: 15px 8px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background: #c88900;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-button:hover {
-    opacity: 0.92;
+.main-button:nth-child(2) {
+    background: #d94d70;
 }
 
-button:active {
+.main-button:active {
     transform: scale(0.97);
 }
 
-.primary-button,
-.secondary-button,
-.danger-button {
-    padding: 12px 16px;
-    font-weight: bold;
-}
-
-.primary-button {
-    background-color: #d94f76;
-    color: #ffffff;
-}
-
-.secondary-button {
-    background-color: #d49a32;
-    color: #ffffff;
-}
-
-.danger-button {
-    background-color: #555555;
-    color: #ffffff;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
 /* =========================
-   CATEGORIES
+   PUBLICATIONS & CARTES
 ========================= */
 
 .section-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 25px 0 13px;
-}
-
-.section-title h2 {
-    margin: 0;
     font-size: 21px;
+    margin: 20px 0 12px;
 }
 
-.categories {
-    display: flex;
-    gap: 9px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    scrollbar-width: thin;
-}
-
-.category {
-    flex-shrink: 0;
-    padding: 10px 15px;
-    border: 2px solid #f4cbd7;
-    border-radius: 20px;
-    background: #ffffff;
-    color: #111111;
-}
-
-.category.active {
-    background: #d94f76;
-    color: #ffffff;
-    border-color: #d94f76;
-}
-
-/* =========================
-   PRODUITS / BOUTIQUE
-========================= */
-
-.products-grid {
+.cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
-.empty-products {
-    grid-column: 1 / -1;
-    padding: 35px 20px;
-    text-align: center;
-    border: 2px dashed #f4cbd7;
-    border-radius: 18px;
-    background: #ffffff;
-    color: #777777;
-}
-
-.product-card {
+.card {
+    background: white;
+    border-radius: 15px;
     overflow: hidden;
-    background: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 5px 18px #0002;
+    border: 1px solid #eee;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-.product-photo {
-    width: 100%;
-    height: 180px;
-    display: block;
-    object-fit: cover;
-    background: #eeeeee;
-}
+.card-image {
+    height: 130px;
+    background: linear-gradient(
+        135deg,
+        #f5d66b,
+        #f2b4c3
+    );
 
-.product-info {
-    padding: 13px;
-}
-
-.product-info h3 {
-    margin: 0 0 7px;
-    font-size: 17px;
-}
-
-.product-price {
-    margin-bottom: 8px;
-    color: #a86f16;
-    font-weight: bold;
-}
-
-.product-description {
-    margin: 0 0 11px;
-    color: #666666;
-    font-size: 13px;
-    line-height: 1.4;
-}
-
-.product-actions {
     display: flex;
-    gap: 7px;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 45px;
 }
 
-.product-actions button {
-    flex: 1;
-    padding: 10px 5px;
-    border-radius: 9px;
+.card-content {
+    padding: 10px;
+}
+
+.card-content h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.card-content p {
+    color: #b47700;
     font-weight: bold;
 }
 
-.view-product {
-    background-color: #d94f76;
-    color: #ffffff;
-}
+/* =========================
+   UTILISATEUR CONNECTÉ
+========================= */
 
-.create-box {
-    padding: 18px;
+.user-box {
+    display: none;
+    background: #fff4d1;
+    border: 1px solid #e3b32e;
+    border-radius: 15px;
+    padding: 14px;
     margin-bottom: 18px;
-    border-top: 5px solid #d49a32;
-    border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 4px 15px #0001;
 }
 
-.create-box input,
-.create-box textarea,
-.create-box select {
-    width: 100%;
-    padding: 13px;
-    margin: 10px 0;
-    border: 1px solid #dddddd;
-    border-radius: 11px;
-    outline: none;
-    background: #ffffff;
-}
-
-.create-box input:focus,
-.create-box textarea:focus,
-.create-box select:focus {
-    border-color: #d49a32;
-}
-
-.create-box textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.shop {
-    max-width: 500px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 20px;
-    background: #ffffff;
-}
-
-.shop header {
-    padding: 15px;
-    text-align: center;
-}
-
-/* =========================
-   VIDÉOS
-========================= */
-
-.video-page {
-    min-height: 100vh;
-    padding: 20px;
-    background-color: #000000;
-    color: #ffffff;
-}
-
-.video-page h1 {
-    text-align: center;
-}
-
-.video-card {
-    max-width: 400px;
-    margin: 0 auto 15px;
-    overflow: hidden;
-    padding-bottom: 15px;
-    border-radius: 15px;
-    background-color: #111111;
-}
-
-.video-card video {
-    width: 100%;
-    height: 600px;
+.user-box.active {
     display: block;
-    object-fit: cover;
-    background: #000000;
 }
 
-.video-card h3,
-.video-card p {
-    padding: 0 15px;
-}
-
-.video-actions {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    padding: 15px;
-}
-
-.video-actions button {
-    flex: 1;
-    padding: 12px;
-    border-radius: 25px;
-    background-color: #111111;
-    color: #ffffff;
+.user-box p {
     font-size: 14px;
-}
-
-/* =========================
-   CHAT / MESSAGES
-========================= */
-
-.chat {
-    max-width: 500px;
-    height: 100vh;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-}
-
-.chat-header {
-    padding: 15px;
-    background-color: #111111;
-    color: #ffffff;
-    text-align: center;
-}
-
-.contact {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #dddddd;
-}
-
-.contact img {
-    width: 45px;
-    height: 45px;
-    margin-right: 10px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.messages-box {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-}
-
-.received,
-.sent {
-    max-width: 80%;
-    width: fit-content;
-    margin-bottom: 8px;
-    padding: 10px;
-    border-radius: 15px;
-}
-
-.received {
-    background-color: #eeeeee;
-}
-
-.sent {
-    margin-left: auto;
-    background-color: #111111;
-    color: #ffffff;
-}
-
-.send-box {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #dddddd;
-    background-color: #ffffff;
-}
-
-.send-box input {
-    flex: 1;
-    min-width: 0;
-    padding: 12px;
-    border: 1px solid #cccccc;
-    border-radius: 20px;
-    outline: none;
-}
-
-.send-box button {
-    margin-left: 10px;
-}
-
-/* =========================
-   MESSAGES IKAGNE
-========================= */
-
-.message-box {
-    padding: 18px;
-    border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 4px 15px #0001;
-}
-
-.message-box input,
-.message-box textarea {
-    width: 100%;
-    padding: 13px;
     margin-bottom: 10px;
-    border: 1px solid #dddddd;
-    border-radius: 11px;
-    outline: none;
-}
-
-.message-box textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-
-.message-item {
-    padding: 12px;
-    margin-bottom: 8px;
-    border-radius: 12px;
-    background: #fff1f5;
-}
-
-/* =========================
-   PROFIL
-========================= */
-
-.profile {
-    max-width: 500px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 30px 15px;
-    background-color: #ffffff;
-    text-align: center;
-}
-
-.profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #f4cbd7;
-}
-
-.profile h1 {
-    margin-top: 15px;
-}
-
-.profile p {
-    color: #666666;
-}
-
-.stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 30px 0;
-}
-
-.stats span {
-    font-weight: bold;
-}
-
-/* =========================
-   COMPTE IKAGNE
-========================= */
-
-.auth-box {
-    margin-top: 20px;
-    padding: 18px;
-    border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 4px 15px #0001;
-}
-
-.auth-box input {
-    width: 100%;
-    padding: 13px;
-    margin-top: 8px;
-    border: 1px solid #dddddd;
-    border-radius: 11px;
-    outline: none;
-}
-
-.auth-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 12px;
-}
-
-#userStatus {
-    margin-top: 12px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.account-card {
-    padding: 20px;
-    border-radius: 20px;
-    background: #ffffff;
-    box-shadow: 0 4px 15px #0001;
-}
-
-.account-card h3 {
-    margin-top: 0;
-    font-size: 24px;
-}
-
-.account-email {
-    margin: 12px 0;
-    padding: 13px;
-    border-radius: 12px;
-    background: #fff1f5;
     word-break: break-word;
 }
 
-/* =========================
-   CONNEXION
-========================= */
-
-.login {
-    max-width: 400px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: #ffffff;
-    text-align: center;
-}
-
-.login-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.login h1 {
-    margin-bottom: 30px;
-    font-size: 32px;
-}
-
-.login input {
-    width: 90%;
-    padding: 14px;
-    margin: 10px 0;
-    border: 1px solid #cccccc;
-    border-radius: 25px;
-    outline: none;
-}
-
-.login button {
-    width: 90%;
-    margin: 10px 0;
-    padding: 14px;
-    border-radius: 25px;
-    background-color: #111111;
-    color: #ffffff;
-}
-
-/* =========================
-   NOTIFICATIONS
-========================= */
-
-.notifications {
-    max-width: 500px;
-    min-height: 100vh;
-    margin: 0 auto;
-    background-color: #ffffff;
-}
-
-.notification-header {
-    padding: 15px;
-    background-color: #111111;
-    color: #ffffff;
-    text-align: center;
-}
-
-.notification-list {
-    padding: 10px;
-}
-
-.notification {
-    display: flex;
-    align-items: center;
-    padding: 15px 10px;
-    border-bottom: 1px solid #dddddd;
-}
-
-.notification img {
-    width: 50px;
-    height: 50px;
-    margin-right: 12px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.notification p {
-    margin: 0;
-    line-height: 1.4;
-}
-
-/* =========================
-   PRODUIT SIMPLE
-========================= */
-
-.product {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 15px;
-    background-color: #f5f5f5;
-    text-align: center;
-}
-
-.product img {
-    width: 120px;
-    height: 120px;
-    border-radius: 15px;
-    object-fit: cover;
-}
-
-.product h2 {
-    margin: 10px 0;
-}
-
-.product p {
-    font-size: 18px;
+.logout-button {
+    border: none;
+    background: #c63f5f;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
     font-weight: bold;
 }
 
-.product button {
-    padding: 12px 25px;
-    border-radius: 25px;
-    background-color: #111111;
-    color: #ffffff;
-}
-
 /* =========================
-   MODAL PRODUIT
+   NAVIGATION INFERIEURE
 ========================= */
 
-.modal {
+.bottom-nav {
     position: fixed;
-    z-index: 2000;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-    background: #0009;
-}
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 
-.modal.active {
-    display: flex;
-}
-
-.modal-content {
-    position: relative;
     width: 100%;
-    max-width: 550px;
-    max-height: 92vh;
-    overflow-y: auto;
-    padding: 18px;
-    border-radius: 22px;
-    background: #ffffff;
+    max-width: 520px;
+
+    height: 65px;
+
+    background: white;
+    border-top: 1px solid #ddd;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    z-index: 200;
 }
 
-.close-modal {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    z-index: 2;
-    width: 38px;
-    height: 38px;
-    padding: 0;
-    border-radius: 50%;
-    background: #eeeeee;
-    color: #111111;
+.nav-item {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    color: #555;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav-icon {
     font-size: 22px;
 }
 
-#modalProductImage {
-    width: 100%;
-    max-height: 350px;
-    margin-bottom: 15px;
-    border-radius: 15px;
-    object-fit: contain;
-    background: #f1f1f1;
-}
-
-#modalProductTitle {
-    margin-bottom: 8px;
-    font-size: 23px;
-}
-
-#modalProductPrice {
-    margin-bottom: 12px;
-    color: #a86f16;
-    font-size: 19px;
-    font-weight: bold;
-}
-
-#modalProductDescription {
-    color: #555555;
-    line-height: 1.6;
-}
-
-.modal-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 18px;
-}
-
-.modal-actions button {
-    flex: 1;
-}
-
 /* =========================
-   NAVIGATION IKAGNE
+   MODAL AUTHENTIFICATION
 ========================= */
 
-.bottom-nav,
-.navbar {
+.modal {
+    display: none;
+
     position: fixed;
-    z-index: 1500;
-    left: 50%;
-    bottom: 0;
+    inset: 0;
+
+    background: rgba(0,0,0,0.65);
+
+    z-index: 1000;
+
+    padding: 20px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.auth-box {
     width: 100%;
-    max-width: 500px;
-    transform: translateX(-50%);
+    max-width: 420px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 25px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+    position: relative;
+}
+
+.auth-logo {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 20px;
+
+    margin: 0 auto 12px;
+
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    min-height: 72px;
-    padding: 8px 0;
-    background-color: #ffffff;
-    border-top: 1px solid #dddddd;
-    box-shadow: 0 -4px 15px #0002;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #ffd75c,
+        #d48a00
+    );
+
+    color: white;
+
+    font-size: 32px;
+    font-weight: 900;
 }
 
-.bottom-nav button,
-.navbar a {
-    border: none;
-    background: none;
-    color: #555555;
+.auth-box h2 {
     text-align: center;
-    text-decoration: none;
-    font-size: 12px;
+    margin-bottom: 8px;
+    color: #b47700;
+}
+
+.auth-description {
+    text-align: center;
+    color: #777;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 28px;
+    color: #555;
+}
+
+.input-group {
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
     font-weight: bold;
 }
 
-.bottom-nav button.active {
-    color: #d94f76;
+.input-group input {
+    width: 100%;
+    padding: 14px;
+
+    border: 1px solid #ccc;
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 16px;
 }
 
-.navbar a {
-    padding: 8px 10px;
+.input-group input:focus {
+    border-color: #d29400;
+    box-shadow: 0 0 0 3px rgba(210,148,0,0.12);
+}
+
+.auth-button {
+    width: 100%;
+
+    border: none;
+
+    background: linear-gradient(
+        135deg,
+        #d08d00,
+        #e4b52e
+    );
+
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    margin-top: 5px;
+}
+
+.auth-button:disabled {
+    opacity: 0.6;
+}
+
+.switch-auth {
+    text-align: center;
+    margin-top: 18px;
+
+    font-size: 14px;
+    color: #666;
+}
+
+.switch-auth button {
+    border: none;
+    background: transparent;
+    color: #c78300;
+    font-weight: bold;
 }
 
 /* =========================
-   FOOTER
+   MESSAGES DE RETOUR
 ========================= */
 
-footer {
-    padding: 25px 15px;
-    color: #888888;
-    font-size: 12px;
-    text-align: center;
+.message {
+    display: none;
+
+    margin-bottom: 14px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.message.show {
+    display: block;
+}
+
+.message.error {
+    background: #ffe2e2;
+    color: #a40000;
+    border: 1px solid #ffb0b0;
+}
+
+.message.success {
+    background: #e1f7e6;
+    color: #16732d;
+    border: 1px solid #a8ddb3;
 }
 
 /* =========================
-   RESPONSIVE
+   CHARGEMENT (LOADING)
+========================= */
+
+.loading {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+    color: #b47700;
+    font-size: 14px;
+}
+
+.loading.show {
+    display: block;
+}
+
+/* =========================
+   MEDIA QUERIES (RESPONSIVE)
 ========================= */
 
 @media (min-width: 700px) {
-    .products-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 500px) {
     .app {
-        width: 100%;
-    }
-
-    .video-card video {
-        height: 70vh;
-        min-height: 450px;
-    }
-
-    .top-header h1 {
-        font-size: 24px;
-    }
-
-    .ikagne-logo {
-        width: 58px;
-        height: 58px;
-    }
-
-    .logo-i {
-        font-size: 54px;
-    }
-
-    .logo-ring {
-        width: 54px;
-        height: 54px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.12);
     }
 }
 
-@media (max-width: 450px) {
-    .products-grid {
+@media (max-width: 480px) {
+    .cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 
-    .product-photo {
-        height: 145px;
-    }
-
-    .auth-buttons,
-    .modal-actions {
-        flex-direction: column;
-    }
-
-    .bottom-nav button,
-    .navbar a {
+    .bottom-nav button {
         font-size: 11px;
     }
 }

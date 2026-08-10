@@ -1,7 +1,6 @@
 /* =========================
    RESET & BASE
 ========================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,8 +13,7 @@ body {
     color: #222;
 }
 
-button,
-input {
+button, input {
     font-family: inherit;
 }
 
@@ -26,7 +24,6 @@ button {
 /* =========================
    APPLICATION CONTAINER
 ========================= */
-
 .app {
     width: 100%;
     max-width: 520px;
@@ -40,21 +37,13 @@ button {
 /* =========================
    HEADER
 ========================= */
-
 .header {
     height: 70px;
-    background: linear-gradient(
-        135deg,
-        #d99b00,
-        #f1c232
-    );
-
+    background: linear-gradient(135deg, #d99b00, #f1c232);
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 10px 16px;
-
     position: sticky;
     top: 0;
     z-index: 100;
@@ -69,27 +58,15 @@ button {
 .logo-circle {
     width: 48px;
     height: 48px;
-
     border-radius: 15px;
-
-    background: linear-gradient(
-        145deg,
-        #ffffff,
-        #ffd45c
-    );
-
+    background: linear-gradient(145deg, #ffffff, #ffd45c);
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 25px;
     font-weight: 900;
-
     color: #b56d00;
-
-    box-shadow:
-        0 5px 10px rgba(0,0,0,0.2),
-        inset 2px 2px 5px rgba(255,255,255,0.8);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2), inset 2px 2px 5px rgba(255,255,255,0.8);
 }
 
 .logo-name {
@@ -111,23 +88,15 @@ button {
 /* =========================
    ACCUEIL
 ========================= */
-
 .home {
     padding: 18px 15px 90px;
 }
 
 .welcome {
-    background: linear-gradient(
-        135deg,
-        #ffe8ec,
-        #fff5d7
-    );
-
+    background: linear-gradient(135deg, #ffe8ec, #fff5d7);
     border-radius: 20px;
     padding: 20px;
-
     margin-bottom: 18px;
-
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
@@ -145,7 +114,6 @@ button {
 /* =========================
    BOUTONS
 ========================= */
-
 .main-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -175,7 +143,6 @@ button {
 /* =========================
    PUBLICATIONS & CARTES
 ========================= */
-
 .section-title {
     font-size: 21px;
     margin: 20px 0 12px;
@@ -197,16 +164,10 @@ button {
 
 .card-image {
     height: 130px;
-    background: linear-gradient(
-        135deg,
-        #f5d66b,
-        #f2b4c3
-    );
-
+    background: linear-gradient(135deg, #f5d66b, #f2b4c3);
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 45px;
 }
 
@@ -227,7 +188,6 @@ button {
 /* =========================
    UTILISATEUR CONNECTÉ
 ========================= */
-
 .user-box {
     display: none;
     background: #fff4d1;
@@ -257,27 +217,21 @@ button {
 }
 
 /* =========================
-   NAVIGATION INFERIEURE
+   NAVIGATION
 ========================= */
-
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-
     width: 100%;
     max-width: 520px;
-
     height: 65px;
-
     background: white;
     border-top: 1px solid #ddd;
-
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     z-index: 200;
 }
 
@@ -286,7 +240,6 @@ button {
     background: transparent;
     font-size: 12px;
     color: #555;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -300,19 +253,13 @@ button {
 /* =========================
    MODAL AUTHENTIFICATION
 ========================= */
-
 .modal {
     display: none;
-
     position: fixed;
     inset: 0;
-
     background: rgba(0,0,0,0.65);
-
     z-index: 1000;
-
     padding: 20px;
-
     align-items: center;
     justify-content: center;
 }
@@ -324,38 +271,23 @@ button {
 .auth-box {
     width: 100%;
     max-width: 420px;
-
     background: white;
-
     border-radius: 22px;
-
     padding: 25px;
-
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-
     position: relative;
 }
 
 .auth-logo {
     width: 65px;
     height: 65px;
-
     border-radius: 20px;
-
     margin: 0 auto 12px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: linear-gradient(
-        145deg,
-        #ffd75c,
-        #d48a00
-    );
-
+    background: linear-gradient(145deg, #ffd75c, #d48a00);
     color: white;
-
     font-size: 32px;
     font-weight: 900;
 }
@@ -377,10 +309,8 @@ button {
     position: absolute;
     right: 15px;
     top: 12px;
-
     border: none;
     background: transparent;
-
     font-size: 28px;
     color: #555;
 }
@@ -399,12 +329,9 @@ button {
 .input-group input {
     width: 100%;
     padding: 14px;
-
     border: 1px solid #ccc;
     border-radius: 12px;
-
     outline: none;
-
     font-size: 16px;
 }
 
@@ -415,24 +342,13 @@ button {
 
 .auth-button {
     width: 100%;
-
     border: none;
-
-    background: linear-gradient(
-        135deg,
-        #d08d00,
-        #e4b52e
-    );
-
+    background: linear-gradient(135deg, #d08d00, #e4b52e);
     color: white;
-
     padding: 14px;
-
     border-radius: 12px;
-
     font-size: 16px;
     font-weight: bold;
-
     margin-top: 5px;
 }
 
@@ -443,7 +359,6 @@ button {
 .switch-auth {
     text-align: center;
     margin-top: 18px;
-
     font-size: 14px;
     color: #666;
 }
@@ -458,16 +373,11 @@ button {
 /* =========================
    MESSAGES DE RETOUR
 ========================= */
-
 .message {
     display: none;
-
     margin-bottom: 14px;
-
     padding: 12px;
-
     border-radius: 10px;
-
     font-size: 14px;
     line-height: 1.4;
 }
@@ -489,9 +399,8 @@ button {
 }
 
 /* =========================
-   CHARGEMENT (LOADING)
+   LOADING
 ========================= */
-
 .loading {
     display: none;
     text-align: center;
@@ -505,9 +414,8 @@ button {
 }
 
 /* =========================
-   MEDIA QUERIES (RESPONSIVE)
+   RESPONSIVE
 ========================= */
-
 @media (min-width: 700px) {
     .app {
         box-shadow: 0 0 30px rgba(0,0,0,0.12);

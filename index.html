@@ -28,6 +28,7 @@
 
         button {
             cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.2s ease, background 0.2s ease;
         }
 
         /* =========================
@@ -94,6 +95,10 @@
             border-radius: 50%;
         }
 
+        .header-user:active {
+            transform: scale(0.9);
+        }
+
         /* =========================
            ACCUEIL
         ========================= */
@@ -146,7 +151,7 @@
         }
 
         .main-button:active {
-            transform: scale(0.97);
+            transform: scale(0.95);
         }
 
         /* =========================
@@ -169,6 +174,11 @@
             overflow: hidden;
             border: 1px solid #eee;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .card:active {
+            transform: translateY(-2px);
         }
 
         .card-image {
@@ -204,6 +214,7 @@
             border-radius: 15px;
             padding: 14px;
             margin-bottom: 18px;
+            animation: fadeIn 0.3s ease;
         }
 
         .user-box.active {
@@ -223,6 +234,10 @@
             padding: 10px 15px;
             border-radius: 10px;
             font-weight: bold;
+        }
+
+        .logout-button:active {
+            transform: scale(0.95);
         }
 
         /* =========================
@@ -255,15 +270,21 @@
             gap: 4px;
         }
 
+        .nav-item:active {
+            transform: scale(0.9);
+        }
+
         .nav-icon {
             font-size: 22px;
         }
 
         /* =========================
-           MODAL AUTHENTIFICATION
+           MODAL ANIMÉ
         ========================= */
         .modal {
-            display: none;
+            display: flex;
+            visibility: hidden;
+            opacity: 0;
             position: fixed;
             inset: 0;
             background: rgba(0,0,0,0.65);
@@ -271,10 +292,12 @@
             padding: 20px;
             align-items: center;
             justify-content: center;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
         .modal.show {
-            display: flex;
+            visibility: visible;
+            opacity: 1;
         }
 
         .auth-box {
@@ -285,6 +308,12 @@
             padding: 25px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .auth-box {
+            transform: translateY(0);
         }
 
         .auth-logo {
@@ -342,6 +371,7 @@
             border-radius: 12px;
             outline: none;
             font-size: 16px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .input-group input:focus {
@@ -359,6 +389,10 @@
             font-size: 16px;
             font-weight: bold;
             margin-top: 5px;
+        }
+
+        .auth-button:active {
+            transform: scale(0.98);
         }
 
         .auth-button:disabled {
@@ -380,7 +414,7 @@
         }
 
         /* =========================
-           MESSAGES DE RETOUR
+           MESSAGES DE RETOUR & ANIMATIONS
         ========================= */
         .message {
             display: none;
@@ -389,6 +423,7 @@
             border-radius: 10px;
             font-size: 14px;
             line-height: 1.4;
+            animation: fadeIn 0.2s ease;
         }
 
         .message.show {
@@ -407,9 +442,6 @@
             border: 1px solid #a8ddb3;
         }
 
-        /* =========================
-           LOADING
-        ========================= */
         .loading {
             display: none;
             text-align: center;
@@ -420,6 +452,11 @@
 
         .loading.show {
             display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* =========================
@@ -606,7 +643,7 @@
 
     let authMode = "signup";
 
-    /* 3. MODALES ET GESTION UI */
+    /* 3. MODALES ET GESTION UI DE NAVIGATION */
     function openSignup() {
         authMode = "signup";
         updateAuthInterface();
@@ -622,6 +659,9 @@
     function closeAuth() {
         document.getElementById("authModal").classList.remove("show");
         clearMessage();
+        if (window.location.hash) {
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+        }
     }
 
     function switchAuthMode() {
@@ -682,13 +722,9 @@
 
         try {
             if (authMode === "signup") {
-                /* A. Création dans Authentication */
                 const result = await firebase.auth().createUserWithEmailAndPassword(email, password);
-
-                /* B. Mise à jour du nom */
                 await result.user.updateProfile({ displayName: name });
 
-                /* C. Enregistrement dans la base Firestore */
                 await db.collection("users").doc(result.user.uid).set({
                     uid: result.user.uid,
                     name: name,
@@ -696,10 +732,9 @@
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
-                showMessage("Compte créé et enregistré avec succès ! Bienvenue.", "success");
+                showMessage("Compte créé avec succès ! Bienvenue.", "success");
                 setTimeout(closeAuth, 1200);
             } else {
-                /* Connexion */
                 await firebase.auth().signInWithEmailAndPassword(email, password);
                 showMessage("Connexion réussie !", "success");
                 setTimeout(closeAuth, 1000);
@@ -752,7 +787,7 @@
         }
     }
 
-    /* 6. ÉCOUTEUR D'ÉTAT (RESTAURATION DE LA SESSION) */
+    /* 6. RESTAURATION SESSION & ROUTING URL */
     if (firebaseReady) {
         firebase.auth().onAuthStateChanged(user => {
             const userBox = document.getElementById("userBox");
@@ -767,6 +802,12 @@
             }
         });
     }
+
+    // Ouverture automatique via URL (#login ou #signup)
+    window.addEventListener("DOMContentLoaded", () => {
+        if (window.location.hash === "#login") openLogin();
+        if (window.location.hash === "#signup") openSignup();
+    });
 
     /* 7. RACCOURCIS & ERGONOMIE */
     document.getElementById("authModal").addEventListener("click", function(e) {

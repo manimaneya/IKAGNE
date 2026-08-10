@@ -1,434 +1,1504 @@
-/* =========================
-   RESET & BASE
-========================= */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    color: #222;
-}
+    <title>Ikagne - Commerce & Réseau Social</title>
 
-button, input {
-    font-family: inherit;
-}
+    <meta name="theme-color" content="#d89b00">
 
-button {
-    cursor: pointer;
-}
+    <style>
+        /* =========================
+           RESET
+        ========================= */
 
-/* =========================
-   APPLICATION CONTAINER
-========================= */
-.app {
-    width: 100%;
-    max-width: 520px;
-    min-height: 100vh;
-    margin: auto;
-    background: white;
-    position: relative;
-    overflow-x: hidden;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-/* =========================
-   HEADER
-========================= */
-.header {
-    height: 70px;
-    background: linear-gradient(135deg, #d99b00, #f1c232);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 16px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+        }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
+        button,
+        input {
+            font-family: inherit;
+        }
 
-.logo-circle {
-    width: 48px;
-    height: 48px;
-    border-radius: 15px;
-    background: linear-gradient(145deg, #ffffff, #ffd45c);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 25px;
-    font-weight: 900;
-    color: #b56d00;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2), inset 2px 2px 5px rgba(255,255,255,0.8);
-}
+        button {
+            cursor: pointer;
+        }
 
-.logo-name {
-    font-size: 24px;
-    font-weight: 900;
-    color: white;
-    text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
-}
+        /* =========================
+           APPLICATION
+        ========================= */
 
-.header-user {
-    font-size: 22px;
-    background: white;
-    border: none;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-}
+        .app {
+            width: 100%;
+            max-width: 520px;
+            min-height: 100vh;
+            margin: auto;
+            background: white;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-/* =========================
-   ACCUEIL
-========================= */
-.home {
-    padding: 18px 15px 90px;
-}
+        /* =========================
+           HEADER
+        ========================= */
 
-.welcome {
-    background: linear-gradient(135deg, #ffe8ec, #fff5d7);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
+        .header {
+            height: 70px;
+            background: linear-gradient(
+                135deg,
+                #d99b00,
+                #f1c232
+            );
 
-.welcome h1 {
-    font-size: 26px;
-    color: #b67800;
-    margin-bottom: 8px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
-.welcome p {
-    color: #555;
-    line-height: 1.5;
-}
+            padding: 10px 16px;
 
-/* =========================
-   BOUTONS
-========================= */
-.main-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
-}
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-.main-button {
-    border: none;
-    border-radius: 15px;
-    padding: 15px 8px;
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    background: #c88900;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
 
-.main-button:nth-child(2) {
-    background: #d94d70;
-}
+        .logo-circle {
+            width: 48px;
+            height: 48px;
 
-.main-button:active {
-    transform: scale(0.97);
-}
+            border-radius: 15px;
 
-/* =========================
-   PUBLICATIONS & CARTES
-========================= */
-.section-title {
-    font-size: 21px;
-    margin: 20px 0 12px;
-}
+            background: linear-gradient(
+                145deg,
+                #ffffff,
+                #ffd45c
+            );
 
-.cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.card {
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid #eee;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-}
+            font-size: 25px;
+            font-weight: 900;
 
-.card-image {
-    height: 130px;
-    background: linear-gradient(135deg, #f5d66b, #f2b4c3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 45px;
-}
+            color: #b56d00;
 
-.card-content {
-    padding: 10px;
-}
+            box-shadow:
+                0 5px 10px rgba(0,0,0,0.2),
+                inset 2px 2px 5px rgba(255,255,255,0.8);
+        }
 
-.card-content h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
+        .logo-name {
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+        }
 
-.card-content p {
-    color: #b47700;
-    font-weight: bold;
-}
+        .header-user {
+            font-size: 22px;
+            background: white;
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+        }
 
-/* =========================
-   UTILISATEUR CONNECTÉ
-========================= */
-.user-box {
-    display: none;
-    background: #fff4d1;
-    border: 1px solid #e3b32e;
-    border-radius: 15px;
-    padding: 14px;
-    margin-bottom: 18px;
-}
+        /* =========================
+           ACCUEIL
+        ========================= */
 
-.user-box.active {
-    display: block;
-}
+        .home {
+            padding: 18px 15px 90px;
+        }
 
-.user-box p {
-    font-size: 14px;
-    margin-bottom: 10px;
-    word-break: break-word;
-}
+        .welcome {
+            background: linear-gradient(
+                135deg,
+                #ffe8ec,
+                #fff5d7
+            );
 
-.logout-button {
-    border: none;
-    background: #c63f5f;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-weight: bold;
-}
+            border-radius: 20px;
+            padding: 20px;
 
-/* =========================
-   NAVIGATION
-========================= */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 520px;
-    height: 65px;
-    background: white;
-    border-top: 1px solid #ddd;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 200;
-}
+            margin-bottom: 18px;
 
-.nav-item {
-    border: none;
-    background: transparent;
-    font-size: 12px;
-    color: #555;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
 
-.nav-icon {
-    font-size: 22px;
-}
+        .welcome h1 {
+            font-size: 26px;
+            color: #b67800;
+            margin-bottom: 8px;
+        }
 
-/* =========================
-   MODAL AUTHENTIFICATION
-========================= */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    z-index: 1000;
-    padding: 20px;
-    align-items: center;
-    justify-content: center;
-}
+        .welcome p {
+            color: #555;
+            line-height: 1.5;
+        }
 
-.modal.show {
-    display: flex;
-}
+        /* =========================
+           BOUTONS
+        ========================= */
 
-.auth-box {
-    width: 100%;
-    max-width: 420px;
-    background: white;
-    border-radius: 22px;
-    padding: 25px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    position: relative;
-}
+        .main-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
 
-.auth-logo {
-    width: 65px;
-    height: 65px;
-    border-radius: 20px;
-    margin: 0 auto 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(145deg, #ffd75c, #d48a00);
-    color: white;
-    font-size: 32px;
-    font-weight: 900;
-}
+        .main-button {
+            border: none;
+            border-radius: 15px;
+            padding: 15px 8px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background: #c88900;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
 
-.auth-box h2 {
-    text-align: center;
-    margin-bottom: 8px;
-    color: #b47700;
-}
+        .main-button:nth-child(2) {
+            background: #d94d70;
+        }
 
-.auth-description {
-    text-align: center;
-    color: #777;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
+        .main-button:active {
+            transform: scale(0.97);
+        }
 
-.close {
-    position: absolute;
-    right: 15px;
-    top: 12px;
-    border: none;
-    background: transparent;
-    font-size: 28px;
-    color: #555;
-}
+        /* =========================
+           PUBLICATIONS
+        ========================= */
 
-.input-group {
-    margin-bottom: 14px;
-}
+        .section-title {
+            font-size: 21px;
+            margin: 20px 0 12px;
+        }
 
-.input-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-size: 14px;
-    font-weight: bold;
-}
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
 
-.input-group input {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    outline: none;
-    font-size: 16px;
-}
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
 
-.input-group input:focus {
-    border-color: #d29400;
-    box-shadow: 0 0 0 3px rgba(210,148,0,0.12);
-}
+        .card-image {
+            height: 130px;
+            background: linear-gradient(
+                135deg,
+                #f5d66b,
+                #f2b4c3
+            );
 
-.auth-button {
-    width: 100%;
-    border: none;
-    background: linear-gradient(135deg, #d08d00, #e4b52e);
-    color: white;
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 5px;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.auth-button:disabled {
-    opacity: 0.6;
-}
+            font-size: 45px;
+        }
 
-.switch-auth {
-    text-align: center;
-    margin-top: 18px;
-    font-size: 14px;
-    color: #666;
-}
+        .card-content {
+            padding: 10px;
+        }
 
-.switch-auth button {
-    border: none;
-    background: transparent;
-    color: #c78300;
-    font-weight: bold;
-}
+        .card-content h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
 
-/* =========================
-   MESSAGES DE RETOUR
-========================= */
-.message {
-    display: none;
-    margin-bottom: 14px;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 14px;
-    line-height: 1.4;
-}
+        .card-content p {
+            color: #b47700;
+            font-weight: bold;
+        }
 
-.message.show {
-    display: block;
-}
+        /* =========================
+           UTILISATEUR CONNECTÉ
+        ========================= */
 
-.message.error {
-    background: #ffe2e2;
-    color: #a40000;
-    border: 1px solid #ffb0b0;
-}
+        .user-box {
+            display: none;
+            background: #fff4d1;
+            border: 1px solid #e3b32e;
+            border-radius: 15px;
+            padding: 14px;
+            margin-bottom: 18px;
+        }
 
-.message.success {
-    background: #e1f7e6;
-    color: #16732d;
-    border: 1px solid #a8ddb3;
-}
+        .user-box.active {
+            display: block;
+        }
 
-/* =========================
-   LOADING
-========================= */
-.loading {
-    display: none;
-    text-align: center;
-    margin-top: 10px;
-    color: #b47700;
-    font-size: 14px;
-}
+        .user-box p {
+            font-size: 14px;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
 
-.loading.show {
-    display: block;
-}
+        .logout-button {
+            border: none;
+            background: #c63f5f;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
 
-/* =========================
-   RESPONSIVE
-========================= */
-@media (min-width: 700px) {
-    .app {
-        box-shadow: 0 0 30px rgba(0,0,0,0.12);
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 100%;
+            max-width: 520px;
+
+            height: 65px;
+
+            background: white;
+            border-top: 1px solid #ddd;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            z-index: 200;
+        }
+
+        .nav-item {
+            border: none;
+            background: transparent;
+            font-size: 12px;
+            color: #555;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-icon {
+            font-size: 22px;
+        }
+
+        /* =========================
+           MODAL AUTHENTIFICATION
+        ========================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,0.65);
+
+            z-index: 1000;
+
+            padding: 20px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 420px;
+
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+            position: relative;
+        }
+
+        .auth-logo {
+            width: 65px;
+            height: 65px;
+
+            border-radius: 20px;
+
+            margin: 0 auto 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(
+                145deg,
+                #ffd75c,
+                #d48a00
+            );
+
+            color: white;
+
+            font-size: 32px;
+            font-weight: 900;
+        }
+
+        .auth-box h2 {
+            text-align: center;
+            margin-bottom: 8px;
+            color: #b47700;
+        }
+
+        .auth-description {
+            text-align: center;
+            color: #777;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+
+            border: none;
+            background: transparent;
+
+            font-size: 28px;
+            color: #555;
+        }
+
+        .input-group {
+            margin-bottom: 14px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+
+            border: 1px solid #ccc;
+            border-radius: 12px;
+
+            outline: none;
+
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            border-color: #d29400;
+            box-shadow: 0 0 0 3px rgba(210,148,0,0.12);
+        }
+
+        .auth-button {
+            width: 100%;
+
+            border: none;
+
+            background: linear-gradient(
+                135deg,
+                #d08d00,
+                #e4b52e
+            );
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            margin-top: 5px;
+        }
+
+        .auth-button:disabled {
+            opacity: 0.6;
+        }
+
+        .switch-auth {
+            text-align: center;
+            margin-top: 18px;
+
+            font-size: 14px;
+            color: #666;
+        }
+
+        .switch-auth button {
+            border: none;
+            background: transparent;
+            color: #c78300;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        .message {
+            display: none;
+
+            margin-bottom: 14px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.error {
+            background: #ffe2e2;
+            color: #a40000;
+            border: 1px solid #ffb0b0;
+        }
+
+        .message.success {
+            background: #e1f7e6;
+            color: #16732d;
+            border: 1px solid #a8ddb3;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+            color: #b47700;
+            font-size: 14px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        @media (min-width: 700px) {
+            .app {
+                box-shadow: 0 0 30px rgba(0,0,0,0.12);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            <div class="logo-circle">I</div>
+            <div class="logo-name">Ikagne</div>
+        </div>
+
+        <button
+            class="header-user"
+            onclick="openLogin()"
+            aria-label="Compte">
+            👤
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         CONTENU
+    ========================= -->
+
+    <main class="home">
+
+        <section class="welcome">
+
+            <h1>Bienvenue sur Ikagne</h1>
+
+            <p>
+                Commerce, vidéos et réseau social réunis
+                dans une seule plateforme.
+            </p>
+
+        </section>
+
+
+        <!-- UTILISATEUR CONNECTÉ -->
+
+        <section id="userBox" class="user-box">
+
+            <p>
+                <strong>Compte connecté :</strong>
+                <span id="userEmail"></span>
+            </p>
+
+            <button
+                class="logout-button"
+                onclick="logout()">
+                Se déconnecter
+            </button>
+
+        </section>
+
+
+        <!-- BOUTONS -->
+
+        <div class="main-buttons">
+
+            <button
+                class="main-button"
+                onclick="openSignup()">
+                ✨ Créer un compte
+            </button>
+
+            <button
+                class="main-button"
+                onclick="openLogin()">
+                🔐 Se connecter
+            </button>
+
+        </div>
+
+
+        <!-- PUBLICATIONS -->
+
+        <h2 class="section-title">
+            Découvrir sur Ikagne
+        </h2>
+
+        <div class="cards">
+
+            <article class="card">
+
+                <div class="card-image">
+                    🎥
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Vidéos</h3>
+
+                    <p>Découvrir</p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-image">
+                    🛍️
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Boutiques</h3>
+
+                    <p>Acheter</p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-image">
+                    🎨
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Créateurs</h3>
+
+                    <p>Explorer</p>
+
+                </div>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-image">
+                    💬
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Messages</h3>
+
+                    <p>Discuter</p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav class="bottom-nav">
+
+        <button class="nav-item">
+            <span class="nav-icon">🏠</span>
+            Accueil
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">🔎</span>
+            Rechercher
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="openLogin()">
+
+            <span class="nav-icon">➕</span>
+            Publier
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="openLogin()">
+
+            <span class="nav-icon">💬</span>
+            Messages
+
+        </button>
+
+        <button
+            class="nav-item"
+            onclick="openLogin()">
+
+            <span class="nav-icon">👤</span>
+            Profil
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- =========================
+     MODAL AUTHENTIFICATION
+========================= -->
+
+<div id="authModal" class="modal">
+
+    <div class="auth-box">
+
+        <button
+            class="close"
+            onclick="closeAuth()">
+            ×
+        </button>
+
+
+        <div class="auth-logo">
+            I
+        </div>
+
+
+        <h2 id="authTitle">
+            Créer un compte
+        </h2>
+
+
+        <p
+            id="authDescription"
+            class="auth-description">
+
+            Rejoins Ikagne gratuitement.
+
+        </p>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="authMessage"
+            class="message">
+        </div>
+
+
+        <!-- NOM -->
+
+        <div
+            id="nameGroup"
+            class="input-group">
+
+            <label for="name">
+                Nom
+            </label>
+
+            <input
+                id="name"
+                type="text"
+                placeholder="Ton nom"
+                autocomplete="name">
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="input-group">
+
+            <label for="email">
+                Adresse e-mail
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="exemple@email.com"
+                autocomplete="email">
+
+        </div>
+
+
+        <!-- MOT DE PASSE -->
+
+        <div class="input-group">
+
+            <label for="password">
+                Mot de passe
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Minimum 6 caractères"
+                autocomplete="current-password">
+
+        </div>
+
+
+        <!-- BOUTON -->
+
+        <button
+            id="authButton"
+            class="auth-button"
+            onclick="handleAuth()">
+
+            Créer mon compte
+
+        </button>
+
+
+        <div
+            id="loading"
+            class="loading">
+
+            Connexion à Firebase...
+
+        </div>
+
+
+        <!-- CHANGER MODE -->
+
+        <div class="switch-auth">
+
+            <span id="switchText">
+                Tu as déjà un compte ?
+            </span>
+
+            <button
+                id="switchButton"
+                onclick="switchAuthMode()">
+
+                Se connecter
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FIREBASE
+========================= -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+
+<script>
+
+    /* ==================================
+       CONFIGURATION FIREBASE IKAGNE
+    ================================== */
+
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
+
+        authDomain: "ikagne.firebaseapp.com",
+
+        projectId: "ikagne",
+
+        storageBucket: "ikagne.firebasestorage.app"
+
+    };
+
+
+    /* ==================================
+       INITIALISATION FIREBASE
+    ================================== */
+
+    let firebaseReady = false;
+
+    try {
+
+        firebase.initializeApp(firebaseConfig);
+
+        firebaseReady = true;
+
+        console.log("Firebase Ikagne connecté.");
+
+    } catch (error) {
+
+        console.error(
+            "Erreur initialisation Firebase :",
+            error
+        );
+
     }
-}
 
-@media (max-width: 480px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+
+    /* ==================================
+       VARIABLES
+    ================================== */
+
+    let authMode = "signup";
+
+
+    /* ==================================
+       OUVRIR INSCRIPTION
+    ================================== */
+
+    function openSignup() {
+
+        authMode = "signup";
+
+        updateAuthInterface();
+
+        document
+            .getElementById("authModal")
+            .classList.add("show");
+
     }
 
-    .bottom-nav button {
-        font-size: 11px;
+
+    /* ==================================
+       OUVRIR CONNEXION
+    ================================== */
+
+    function openLogin() {
+
+        authMode = "login";
+
+        updateAuthInterface();
+
+        document
+            .getElementById("authModal")
+            .classList.add("show");
+
     }
-}
+
+
+    /* ==================================
+       FERMER
+    ================================== */
+
+    function closeAuth() {
+
+        document
+            .getElementById("authModal")
+            .classList.remove("show");
+
+        clearMessage();
+
+    }
+
+
+    /* ==================================
+       CHANGER CONNEXION / INSCRIPTION
+    ================================== */
+
+    function switchAuthMode() {
+
+        if (authMode === "signup") {
+
+            authMode = "login";
+
+        } else {
+
+            authMode = "signup";
+
+        }
+
+        updateAuthInterface();
+
+        clearMessage();
+
+    }
+
+
+    /* ==================================
+       INTERFACE
+    ================================== */
+
+    function updateAuthInterface() {
+
+        const title =
+            document.getElementById("authTitle");
+
+        const description =
+            document.getElementById("authDescription");
+
+        const button =
+            document.getElementById("authButton");
+
+        const nameGroup =
+            document.getElementById("nameGroup");
+
+        const switchText =
+            document.getElementById("switchText");
+
+        const switchButton =
+            document.getElementById("switchButton");
+
+        const password =
+            document.getElementById("password");
+
+
+        if (authMode === "signup") {
+
+            title.textContent =
+                "Créer un compte";
+
+            description.textContent =
+                "Rejoins Ikagne gratuitement.";
+
+            button.textContent =
+                "Créer mon compte";
+
+            nameGroup.style.display =
+                "block";
+
+            switchText.textContent =
+                "Tu as déjà un compte ?";
+
+            switchButton.textContent =
+                "Se connecter";
+
+            password.autocomplete =
+                "new-password";
+
+        } else {
+
+            title.textContent =
+                "Se connecter";
+
+            description.textContent =
+                "Connecte-toi à ton compte Ikagne.";
+
+            button.textContent =
+                "Se connecter";
+
+            nameGroup.style.display =
+                "none";
+
+            switchText.textContent =
+                "Tu n'as pas encore de compte ?";
+
+            switchButton.textContent =
+                "Créer un compte";
+
+            password.autocomplete =
+                "current-password";
+
+        }
+
+    }
+
+
+    /* ==================================
+       AUTHENTIFICATION
+    ================================== */
+
+    async function handleAuth() {
+
+        clearMessage();
+
+
+        if (!firebaseReady) {
+
+            showMessage(
+                "Firebase n'est pas correctement initialisé.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        /* VALIDATION */
+
+        if (!email) {
+
+            showMessage(
+                "Entre ton adresse e-mail.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (!password) {
+
+            showMessage(
+                "Entre ton mot de passe.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (authMode === "signup" && !name) {
+
+            showMessage(
+                "Entre ton nom.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (authMode === "signup" && password.length < 6) {
+
+            showMessage(
+                "Le mot de passe doit contenir au moins 6 caractères.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        setLoading(true);
+
+
+        try {
+
+            if (authMode === "signup") {
+
+                /* =========================
+                   CRÉATION DU COMPTE
+                ========================= */
+
+                const result =
+                    await firebase
+                        .auth()
+                        .createUserWithEmailAndPassword(
+                            email,
+                            password
+                        );
+
+
+                /* AJOUT DU NOM */
+
+                await result.user.updateProfile({
+
+                    displayName: name
+
+                });
+
+
+                showMessage(
+                    "Compte créé avec succès ! Bienvenue sur Ikagne.",
+                    "success"
+                );
+
+
+                setTimeout(() => {
+
+                    closeAuth();
+
+                }, 1200);
+
+
+            } else {
+
+                /* =========================
+                   CONNEXION
+                ========================= */
+
+                await firebase
+                    .auth()
+                    .signInWithEmailAndPassword(
+                        email,
+                        password
+                    );
+
+
+                showMessage(
+                    "Connexion réussie !",
+                    "success"
+                );
+
+
+                setTimeout(() => {
+
+                    closeAuth();
+
+                }, 1000);
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Firebase Auth Error:",
+                error
+            );
+
+
+            showMessage(
+                firebaseErrorMessage(error),
+                "error"
+            );
+
+        } finally {
+
+            setLoading(false);
+
+        }
+
+    }
+
+
+    /* ==================================
+       TRADUCTION DES ERREURS FIREBASE
+    ================================== */
+
+    function firebaseErrorMessage(error) {
+
+        const code = error.code || "";
+
+
+        switch (code) {
+
+            case "auth/email-already-in-use":
+
+                return "Cette adresse e-mail possède déjà un compte.";
+
+            case "auth/invalid-email":
+
+                return "L'adresse e-mail n'est pas valide.";
+
+            case "auth/weak-password":
+
+                return "Le mot de passe est trop faible. Utilise au moins 6 caractères.";
+
+            case "auth/user-not-found":
+
+                return "Aucun compte ne correspond à cette adresse e-mail.";
+
+            case "auth/wrong-password":
+
+                return "Mot de passe incorrect.";
+
+            case "auth/invalid-credential":
+
+                return "E-mail ou mot de passe incorrect.";
+
+            case "auth/user-disabled":
+
+                return "Ce compte a été désactivé.";
+
+            case "auth/too-many-requests":
+
+                return "Trop de tentatives. Attends quelques minutes puis réessaie.";
+
+            case "auth/network-request-failed":
+
+                return "Problème de connexion Internet. Vérifie ta connexion.";
+
+            case "auth/operation-not-allowed":
+
+                return "La connexion par e-mail n'est pas activée dans Firebase.";
+
+            case "auth/configuration-not-found":
+
+                return "La configuration Firebase Authentication est incomplète.";
+
+            default:
+
+                return "Erreur Firebase : " +
+                    (error.message || "Erreur inconnue.");
+
+        }
+
+    }
+
+
+    /* ==================================
+       MESSAGE
+    ================================== */
+
+    function showMessage(text, type) {
+
+        const message =
+            document.getElementById("authMessage");
+
+        message.textContent = text;
+
+        message.className =
+            "message show " + type;
+
+    }
+
+
+    function clearMessage() {
+
+        const message =
+            document.getElementById("authMessage");
+
+        message.textContent = "";
+
+        message.className =
+            "message";
+
+    }
+
+
+    /* ==================================
+       LOADING
+    ================================== */
+
+    function setLoading(value) {
+
+        const button =
+            document.getElementById("authButton");
+
+        const loading =
+            document.getElementById("loading");
+
+
+        button.disabled = value;
+
+        loading.classList.toggle(
+            "show",
+            value
+        );
+
+    }
+
+
+    /* ==================================
+       DÉCONNEXION
+    ================================== */
+
+    async function logout() {
+
+        try {
+
+            await firebase
+                .auth()
+                .signOut();
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Impossible de se déconnecter."
+            );
+
+        }
+
+    }
+
+
+    /* ==================================
+       ÉTAT DE CONNEXION
+    ================================== */
+
+    if (firebaseReady) {
+
+        firebase
+            .auth()
+            .onAuthStateChanged(
+                function(user) {
+
+                    const userBox =
+                        document.getElementById("userBox");
+
+                    const userEmail =
+                        document.getElementById("userEmail");
+
+
+                    if (user) {
+
+                        userBox.classList.add(
+                            "active"
+                        );
+
+
+                        userEmail.textContent =
+                            user.email;
+
+
+                        console.log(
+                            "Utilisateur connecté :",
+                            user.email
+                        );
+
+                    } else {
+
+                        userBox.classList.remove(
+                            "active"
+                        );
+
+
+                        userEmail.textContent =
+                            "";
+
+                    }
+
+                }
+            );
+
+    }
+
+
+    /* ==================================
+       FERMER LE MODAL EN CLIQUANT DEHORS
+    ================================== */
+
+    document
+        .getElementById("authModal")
+        .addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target ===
+                    this
+                ) {
+
+                    closeAuth();
+
+                }
+
+            }
+        );
+
+
+    /* ==================================
+       TOUCHE ENTRÉE
+    ================================== */
+
+    document
+        .getElementById("password")
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    handleAuth();
+
+                }
+
+            }
+        );
+
+</script>
+
+</body>
+</html>

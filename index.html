@@ -515,9 +515,34 @@
             display: block;
         }
 
+        /* =========================
+           MEDIA QUERIES (RESPONSIVE)
+        ========================= */
+
         @media (min-width: 700px) {
             .app {
                 box-shadow: 0 0 30px rgba(0,0,0,0.12);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .product-photo {
+                height: 145px;
+            }
+
+            .auth-buttons,
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .bottom-nav button,
+            .navbar a {
+                font-size: 11px;
             }
         }
     </style>
@@ -871,11 +896,10 @@
 
 
 <!-- =========================
-     FIREBASE
+     FIREBASE SDK
 ========================= -->
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
 
@@ -886,15 +910,13 @@
     ================================== */
 
     const firebaseConfig = {
-
         apiKey: "AIzaSyBg2Ym2olbTbVWneKksVNtlkk_L4P5PIPg",
-
         authDomain: "ikagne.firebaseapp.com",
-
         projectId: "ikagne",
-
-        storageBucket: "ikagne.firebasestorage.app"
-
+        storageBucket: "ikagne.firebasestorage.app",
+        messagingSenderId: "1081226903315",
+        appId: "1:1081226903315:web:af9aec535fe1b0968a64e6",
+        measurementId: "G-Y855TJMF00"
     };
 
 

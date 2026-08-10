@@ -8,17 +8,33 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fff8fa;
     color: #111111;
     -webkit-font-smoothing: antialiased;
+    padding-bottom: 82px;
 }
 
 button,
-input {
+input,
+textarea,
+select {
     font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img,
+video {
+    max-width: 100%;
 }
 
 /* =========================
@@ -28,10 +44,10 @@ input {
 .app {
     max-width: 500px;
     width: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     background-color: #ffffff;
-    min-height: 100vh;
-    padding-bottom: 70px; /* Évite de masquer le contenu derrière la navbar fixe */
+    padding-bottom: 82px;
 }
 
 /* =========================
@@ -39,23 +55,27 @@ input {
 ========================= */
 
 .top-header {
+    min-height: 82px;
     display: flex;
     align-items: center;
-    padding: 15px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #dddddd;
-    gap: 10px;
+    gap: 13px;
+    padding: 12px 18px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #d94f76, #d49a32);
+    box-shadow: 0 5px 18px #0003;
 }
 
 .top-header h1 {
-    font-size: 28px;
     margin: 0;
+    font-size: 30px;
+    line-height: 1;
+    text-shadow: 2px 3px 0 #0004;
 }
 
 .top-header p {
-    margin: 4px 0 0;
-    color: #666666;
-    font-size: 12px;
+    margin: 5px 0 0;
+    color: #ffffff;
+    font-size: 11px;
 }
 
 /* =========================
@@ -65,19 +85,20 @@ input {
 .logo {
     width: 60px;
     height: 60px;
-    border-radius: 50%;
     margin-right: 10px;
+    border-radius: 50%;
     object-fit: cover;
+    background: #ffffff;
 }
 
 /* =========================
-   LOGO IKAGNE I 3D
+   LOGO IKAGNE 3D
 ========================= */
 
 .ikagne-logo {
+    position: relative;
     width: 62px;
     height: 62px;
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,9 +156,11 @@ input {
     0% {
         transform: rotateY(-28deg) rotateX(8deg) scale(0.94);
     }
+
     50% {
         transform: rotateY(0deg) rotateX(0deg) scale(1.08);
     }
+
     100% {
         transform: rotateY(28deg) rotateX(-8deg) scale(0.94);
     }
@@ -147,9 +170,29 @@ input {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+main {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px;
 }
 
 /* =========================
@@ -157,8 +200,8 @@ input {
 ========================= */
 
 .welcome {
-    text-align: center;
     padding: 40px 20px;
+    text-align: center;
 }
 
 .welcome h2 {
@@ -170,54 +213,266 @@ input {
     line-height: 1.5;
 }
 
+.hero {
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #ffffff, #f4cbd7);
+    border-left: 6px solid #d49a32;
+    box-shadow: 0 5px 18px #0002;
+}
+
+.hero h2 {
+    margin: 0 0 9px;
+    font-size: 25px;
+}
+
+.hero p {
+    margin: 0;
+    color: #555555;
+    line-height: 1.5;
+}
+
+/* =========================
+   RECHERCHE
+========================= */
+
+.search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 14px;
+    border: 2px solid #f4cbd7;
+    border-radius: 14px;
+    background: #ffffff;
+    outline: none;
+    font-size: 15px;
+}
+
+.search-box input:focus {
+    border-color: #d49a32;
+}
+
+.search-box button {
+    border: none;
+    padding: 0 18px;
+    border-radius: 14px;
+    color: #ffffff;
+    background: #d49a32;
+    font-weight: bold;
+}
+
 /* =========================
    BOUTONS
 ========================= */
+
+button {
+    border: none;
+    border-radius: 12px;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.92;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.primary-button,
+.secondary-button,
+.danger-button {
+    padding: 12px 16px;
+    font-weight: bold;
+}
+
+.primary-button {
+    background-color: #d94f76;
+    color: #ffffff;
+}
+
+.secondary-button {
+    background-color: #d49a32;
+    color: #ffffff;
+}
+
+.danger-button {
+    background-color: #555555;
+    color: #ffffff;
+}
 
 .buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
-}
-
-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 25px;
-    background-color: #111111;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #333333;
+    flex-wrap: wrap;
 }
 
 /* =========================
-   NAVIGATION
+   CATEGORIES
 ========================= */
 
-.navbar {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 500px;
+.section-title {
     display: flex;
-    justify-content: space-around;
-    background-color: #ffffff;
-    padding: 10px 0;
-    border-top: 1px solid #dddddd;
-    z-index: 1000;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 0 13px;
 }
 
-.navbar a {
-    text-decoration: none;
+.section-title h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.categories {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+}
+
+.category {
+    flex-shrink: 0;
+    padding: 10px 15px;
+    border: 2px solid #f4cbd7;
+    border-radius: 20px;
+    background: #ffffff;
     color: #111111;
+}
+
+.category.active {
+    background: #d94f76;
+    color: #ffffff;
+    border-color: #d94f76;
+}
+
+/* =========================
+   PRODUITS / BOUTIQUE
+========================= */
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.empty-products {
+    grid-column: 1 / -1;
+    padding: 35px 20px;
     text-align: center;
-    font-size: 14px;
+    border: 2px dashed #f4cbd7;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #777777;
+}
+
+.product-card {
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px #0002;
+}
+
+.product-photo {
+    width: 100%;
+    height: 180px;
+    display: block;
+    object-fit: cover;
+    background: #eeeeee;
+}
+
+.product-info {
+    padding: 13px;
+}
+
+.product-info h3 {
+    margin: 0 0 7px;
+    font-size: 17px;
+}
+
+.product-price {
+    margin-bottom: 8px;
+    color: #a86f16;
+    font-weight: bold;
+}
+
+.product-description {
+    margin: 0 0 11px;
+    color: #666666;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.product-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.product-actions button {
+    flex: 1;
+    padding: 10px 5px;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.view-product {
+    background-color: #d94f76;
+    color: #ffffff;
+}
+
+.create-box {
+    padding: 18px;
+    margin-bottom: 18px;
+    border-top: 5px solid #d49a32;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px #0001;
+}
+
+.create-box input,
+.create-box textarea,
+.create-box select {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #dddddd;
+    border-radius: 11px;
+    outline: none;
+    background: #ffffff;
+}
+
+.create-box input:focus,
+.create-box textarea:focus,
+.create-box select:focus {
+    border-color: #d49a32;
+}
+
+.create-box textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.shop {
+    max-width: 500px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+}
+
+.shop header {
+    padding: 15px;
+    text-align: center;
 }
 
 /* =========================
@@ -225,10 +480,10 @@ button:hover {
 ========================= */
 
 .video-page {
-    background-color: #000000;
     min-height: 100vh;
-    color: #ffffff;
     padding: 20px;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .video-page h1 {
@@ -236,18 +491,20 @@ button:hover {
 }
 
 .video-card {
-    margin: 0 auto;
     max-width: 400px;
-    background-color: #111111;
-    border-radius: 15px;
+    margin: 0 auto 15px;
     overflow: hidden;
     padding-bottom: 15px;
+    border-radius: 15px;
+    background-color: #111111;
 }
 
 .video-card video {
     width: 100%;
     height: 600px;
+    display: block;
     object-fit: cover;
+    background: #000000;
 }
 
 .video-card h3,
@@ -255,45 +512,34 @@ button:hover {
     padding: 0 15px;
 }
 
-/* =========================
-   ACTIONS VIDÉO
-========================= */
-
 .video-actions {
     display: flex;
-    justify-content: space-around;
     align-items: center;
-    padding: 15px;
+    justify-content: space-around;
     gap: 10px;
+    padding: 15px;
 }
 
 .video-actions button {
     flex: 1;
     padding: 12px;
-    border: none;
     border-radius: 25px;
     background-color: #111111;
     color: #ffffff;
     font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.video-actions button:hover {
-    background-color: #333333;
 }
 
 /* =========================
-   CHAT
+   CHAT / MESSAGES
 ========================= */
 
 .chat {
     max-width: 500px;
     height: 100vh;
     margin: 0 auto;
-    background-color: #ffffff;
     display: flex;
     flex-direction: column;
+    background-color: #ffffff;
 }
 
 .chat-header {
@@ -313,8 +559,8 @@ button:hover {
 .contact img {
     width: 45px;
     height: 45px;
-    border-radius: 50%;
     margin-right: 10px;
+    border-radius: 50%;
     object-fit: cover;
 }
 
@@ -324,24 +570,23 @@ button:hover {
     overflow-y: auto;
 }
 
-.received {
-    background-color: #eeeeee;
+.received,
+.sent {
+    max-width: 80%;
+    width: fit-content;
+    margin-bottom: 8px;
     padding: 10px;
     border-radius: 15px;
-    width: fit-content;
-    max-width: 80%;
-    margin-bottom: 8px;
+}
+
+.received {
+    background-color: #eeeeee;
 }
 
 .sent {
+    margin-left: auto;
     background-color: #111111;
     color: #ffffff;
-    padding: 10px;
-    border-radius: 15px;
-    margin-left: auto;
-    width: fit-content;
-    max-width: 80%;
-    margin-bottom: 8px;
 }
 
 .send-box {
@@ -353,14 +598,48 @@ button:hover {
 
 .send-box input {
     flex: 1;
+    min-width: 0;
     padding: 12px;
-    border-radius: 20px;
     border: 1px solid #cccccc;
+    border-radius: 20px;
     outline: none;
 }
 
 .send-box button {
     margin-left: 10px;
+}
+
+/* =========================
+   MESSAGES IKAGNE
+========================= */
+
+.message-box {
+    padding: 18px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px #0001;
+}
+
+.message-box input,
+.message-box textarea {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 11px;
+    outline: none;
+}
+
+.message-box textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.message-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    background: #fff1f5;
 }
 
 /* =========================
@@ -371,9 +650,9 @@ button:hover {
     max-width: 500px;
     min-height: 100vh;
     margin: 0 auto;
+    padding: 30px 15px;
     background-color: #ffffff;
     text-align: center;
-    padding: 30px 15px;
 }
 
 .profile-img {
@@ -381,6 +660,7 @@ button:hover {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
+    border: 4px solid #f4cbd7;
 }
 
 .profile h1 {
@@ -401,9 +681,58 @@ button:hover {
     font-weight: bold;
 }
 
-.profile button {
-    padding: 12px 25px;
-    border-radius: 25px;
+/* =========================
+   COMPTE IKAGNE
+========================= */
+
+.auth-box {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px #0001;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 13px;
+    margin-top: 8px;
+    border: 1px solid #dddddd;
+    border-radius: 11px;
+    outline: none;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 12px;
+}
+
+#userStatus {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.account-card {
+    padding: 20px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px #0001;
+}
+
+.account-card h3 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.account-email {
+    margin: 12px 0;
+    padding: 13px;
+    border-radius: 12px;
+    background: #fff1f5;
+    word-break: break-word;
 }
 
 /* =========================
@@ -414,9 +743,9 @@ button:hover {
     max-width: 400px;
     min-height: 100vh;
     margin: 0 auto;
+    padding: 40px 20px;
     background-color: #ffffff;
     text-align: center;
-    padding: 40px 20px;
 }
 
 .login-logo {
@@ -427,16 +756,16 @@ button:hover {
 }
 
 .login h1 {
-    font-size: 32px;
     margin-bottom: 30px;
+    font-size: 32px;
 }
 
 .login input {
     width: 90%;
     padding: 14px;
     margin: 10px 0;
-    border-radius: 25px;
     border: 1px solid #cccccc;
+    border-radius: 25px;
     outline: none;
 }
 
@@ -447,7 +776,6 @@ button:hover {
     border-radius: 25px;
     background-color: #111111;
     color: #ffffff;
-    border: none;
 }
 
 /* =========================
@@ -482,9 +810,9 @@ button:hover {
 .notification img {
     width: 50px;
     height: 50px;
+    margin-right: 12px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 12px;
 }
 
 .notification p {
@@ -493,27 +821,14 @@ button:hover {
 }
 
 /* =========================
-   BOUTIQUE
+   PRODUIT SIMPLE
 ========================= */
 
-.shop {
-    max-width: 500px;
-    min-height: 100vh;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 20px;
-}
-
-.shop header {
-    text-align: center;
-    padding: 15px;
-}
-
 .product {
-    background-color: #f5f5f5;
-    border-radius: 15px;
     padding: 15px;
     margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: #f5f5f5;
     text-align: center;
 }
 
@@ -538,12 +853,150 @@ button:hover {
     border-radius: 25px;
     background-color: #111111;
     color: #ffffff;
+}
+
+/* =========================
+   MODAL PRODUIT
+========================= */
+
+.modal {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: #0009;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    max-height: 92vh;
+    overflow-y: auto;
+    padding: 18px;
+    border-radius: 22px;
+    background: #ffffff;
+}
+
+.close-modal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    background: #eeeeee;
+    color: #111111;
+    font-size: 22px;
+}
+
+#modalProductImage {
+    width: 100%;
+    max-height: 350px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    object-fit: contain;
+    background: #f1f1f1;
+}
+
+#modalProductTitle {
+    margin-bottom: 8px;
+    font-size: 23px;
+}
+
+#modalProductPrice {
+    margin-bottom: 12px;
+    color: #a86f16;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+#modalProductDescription {
+    color: #555555;
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.modal-actions button {
+    flex: 1;
+}
+
+/* =========================
+   NAVIGATION IKAGNE
+========================= */
+
+.bottom-nav,
+.navbar {
+    position: fixed;
+    z-index: 1500;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    max-width: 500px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 72px;
+    padding: 8px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #dddddd;
+    box-shadow: 0 -4px 15px #0002;
+}
+
+.bottom-nav button,
+.navbar a {
     border: none;
+    background: none;
+    color: #555555;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.bottom-nav button.active {
+    color: #d94f76;
+}
+
+.navbar a {
+    padding: 8px 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 25px 15px;
+    color: #888888;
+    font-size: 12px;
+    text-align: center;
 }
 
 /* =========================
    RESPONSIVE
 ========================= */
+
+@media (min-width: 700px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 
 @media (max-width: 500px) {
     .app {
@@ -552,6 +1005,7 @@ button:hover {
 
     .video-card video {
         height: 70vh;
+        min-height: 450px;
     }
 
     .top-header h1 {
@@ -570,5 +1024,26 @@ button:hover {
     .logo-ring {
         width: 54px;
         height: 54px;
+    }
+}
+
+@media (max-width: 450px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .product-photo {
+        height: 145px;
+    }
+
+    .auth-buttons,
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .bottom-nav button,
+    .navbar a {
+        font-size: 11px;
     }
 }
